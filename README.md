@@ -10,4 +10,13 @@
 
 ### 项目要点：
 * 1、获取用户位置
-  * 
+  * 调用微信小程序官方提供API进行获取
+  * 在成功的回调函数中获取用户所在的经纬度
+  ```js
+  wx.getLocation({  // 获取地理位置
+    type: 'gcj02',  
+    success: function(res){
+      console.log(res)
+    }
+  })
+  ```
