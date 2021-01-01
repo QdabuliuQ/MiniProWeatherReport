@@ -1,0 +1,12 @@
+.navbar{
+  width: 100%;
+  /* height:130rpx; */
+  background-color: transparent;
+  color: #Fff;
+  position: relative;
+}
+.containerNav{
+  text-align: center;
+  font-size: 35rpx;
+  line-height: 88rpx;
+}

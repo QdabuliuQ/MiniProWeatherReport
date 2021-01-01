@@ -1,0 +1,228 @@
+.container{
+  position: relative;
+}
+.container_bgcImg{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  z-index: -1;
+}
+.container_bgcImg image{
+  width: 100%;
+  height: 100%;
+  transform: scale(1.5);
+}
+.TemperatureView{
+  width: 100%;
+  height: 430rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.TemperatureBox{
+  width: 45%;
+  height: 40%;
+  display: flex;
+}
+.leftDetail{
+  flex: 5.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 130rpx;
+  font-weight: 200;
+  color: #Fff;
+  box-sizing: border-box;
+  border-right: 1px solid rgb(241, 241, 241);
+}
+.rightDetail{
+  flex: 4;
+  display: flex;
+  align-items: center;
+  margin-left: 20rpx;
+}
+.tempTopBox{
+  padding: 0 24rpx;
+  width: 100%;
+  /* height: 40rpx; */
+  display: flex;
+  color: #Fff;
+  font-size: 26rpx;
+  border-bottom: 1px solid #dfdfdf31;
+  padding-bottom: 15rpx;
+}
+.tip{
+  flex: 1;
+}
+.date{
+  flex: 1;
+  text-align: right;
+}
+.tempHourList{
+  width: 100%;
+  height: 200rpx;
+}
+.scrollView{
+  height: 200rpx;
+  border-bottom: 1px solid #dfdfdf31;
+}
+.scrollHourBox{
+  width: calc((100vw / 5) * 24);
+}
+.tempHourItem{
+  width: calc(100vw / 5);
+  height: 200rpx;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ecc42f;
+  font-size: 37rpx;
+  float: left;
+}
+.time{
+  color: #fff;
+  margin-bottom: 10rpx;
+  font-size: 32rpx;
+  
+}
+.tempItem{
+  color: #fff;
+  font-size: 32rpx;
+}
+.weatherIcon{
+  margin-bottom: 13rpx;
+  font-size: 34rpx;
+}
+.tempFutureList{
+  padding: 17rpx 28rpx;
+}
+.tempFutureItem{
+  width: 100%;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+.leftDay{
+  flex: 3.5;
+}
+.centerIcon{
+  flex: 2;
+}
+.tempFutureItemIcon{
+  font-size: 37rpx !important;
+}
+.itemIcon{
+  margin-bottom: 12rpx;
+}
+.liftIndexItemIcon{
+  font-size: 60rpx;
+}
+.tempMax{
+  flex: 1;
+  text-align: right;
+}
+.tempMin{
+  flex: 1;
+  text-align: right;
+}
+.tempDetail{
+  padding: 0 24rpx;
+  color: #Fff;
+  margin-top: 50rpx;
+}
+.tempDetailTop{
+  font-size: 26rpx;
+  border-bottom: 1px solid #dfdfdf31;
+  padding-bottom: 15rpx;
+}
+.tempDetailView{
+  width: 100%;
+  height: 380rpx;
+  margin-top: 15rpx;
+  display: flex;
+}
+.tempDetailLeft{
+  flex: 3.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  /* border-right: 1px solid #dfdfdf31; */
+}
+.liftIndexTop{
+  font-size: 26rpx;
+  border-bottom: 1px solid #dfdfdf31;
+  padding:0 24rpx 15rpx;
+  color: #fff;
+  margin-top: 40rpx;
+}
+.detailIcon{
+  font-size: 170rpx;
+}
+.temDetailRight{
+  flex: 6.5;
+}
+.temDetailItem{
+  width: 95%;
+  margin-left: 5%;
+  height: calc(100% / 6);
+  display: flex;
+  font-size: 28rpx;
+  box-sizing: border-box;
+  border-bottom: 1px solid #dfdfdf31;
+}
+.temDetailItemLeft{
+  flex: 4;
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+.temDetailItemRight{
+  flex: 6;
+  color: #fff;
+  line-height:62rpx;
+  text-align: right !important;
+}
+.liftIndex{
+  width: 100%;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+  margin-bottom: 40rpx;
+  margin-top: 20rpx;
+}
+.liftIndexItem{
+  width: 25%;
+  height: 200rpx;
+  text-align: center;
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+.liftIndexBox{
+  width: 100%;
+}
+.itemName{
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #b9b9b9;
+  font-size: 26rpx;
+  margin-top: 3rpx;
+}
+.icon1{
+  color: #ecc42f;
+}
+.icon2{
+  color: #cdcdcd;
+}
+.icon3{
+  color: #2b95db;
+}
+.icon4{
+  color: #Fff;
+}

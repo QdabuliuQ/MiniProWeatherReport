@@ -1,0 +1,4 @@
+<view class="navbar">
+  <view class="topNavbar" style="height:{{globalData.statusBarHeight}}px"></view>
+  <view class="containerNav">{{CityTitle}}</view>
+</view>

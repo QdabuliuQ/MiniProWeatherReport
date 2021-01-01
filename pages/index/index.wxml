@@ -1,0 +1,169 @@
+<!--index.wxml-->
+<view class="container">
+  <navbar class="navbar" CityTitle="{{cityDetail.adm2}}"></navbar>
+  <view class="index_container">
+    <!-- 当前温度 -->
+    <view class="TemperatureView">
+      <view class="TemperatureBox">
+        <view class="leftDetail">{{tempertureDetail.temp}}°</view>
+        <view class="rightDetail">
+          <view class="rightBox">
+            <view style="margin-bottom: 6rpx" class="iconfont {{m1.getIcon(tempertureDetail.text)}}"></view>
+            <view style="margin-bottom: 4rpx; color: #fff" class="">{{tempertureDetail.text}}</view>
+            <view style="color: #fff">{{tempertureDetail.windDir}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 未来24小时 -->
+    <view class="tempWilling">
+      <view class="tempTopBox">
+        <view class="tip">预报（未来24小时）</view>
+        <view class="date">{{date}}</view>
+      </view>
+      <view class="tempHourList">
+        <scroll-view 
+        class="scrollView"
+        enhanced="true"
+        show-scrollbar="false" 
+        scroll-x="true">
+          <view class="scrollHourBox">
+            <view class="tempHourItem" wx:for="{{hourList}}" wx:key="key">
+              <view class="itemBox">
+                <view class="time">{{m1.getDay(item.fxTime)}}</view>
+                <view class="weatherIcon">
+                  <view class="iconfont {{item.time >= 18 || item.time < 6 ? 'icon-yueliang' : 'icon-taiyang taiyang'}}"></view>
+                </view>
+                <view class="tempItem">{{item.temp}}°</view>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+    <!-- 未来7天 -->
+    <view class="tempFutureList">
+      <view class="tempFutureItem" wx:for="{{futureDaily}}" wx:key="key">
+        <view class="leftDay">{{item.DayOfWeek}}</view>
+        <view class="centerIcon">
+          <view class="tempFutureItemIcon iconfont {{m1.getIcon(item.textDay)}}"></view>
+        </view>
+        <view class="tempMax">{{item.tempMax}}°</view>
+        <view class="tempMin">{{item.tempMin}}°</view>
+      </view>
+    </view>
+    <!-- 详情数据 -->
+    <view class="tempDetail">
+      <view class="tempDetailTop">详情数据</view>
+      <view class="tempDetailView">
+        <view class="tempDetailLeft">
+          <view class="iconfont detailIcon {{m1.getIcon(tempertureDetail.text)}}"></view>
+        </view>
+        <view class="temDetailRight">
+          <view class="temDetailItem">
+            <view class="temDetailItemLeft">
+              今日预报
+            </view>
+            <view class="temDetailItemRight">
+              {{tempertureDetail.text}}
+            </view>
+          </view>
+          <view class="temDetailItem">
+            <view class="temDetailItemLeft">
+              体感温度
+            </view>
+            <view class="temDetailItemRight">
+              {{tempertureDetail.feelsLike}}°
+            </view>
+          </view>
+          <view class="temDetailItem">
+            <view class="temDetailItemLeft">
+              风向风力
+            </view>
+            <view class="temDetailItemRight">
+              {{tempertureDetail.windDir}}{{tempertureDetail.windScale}}级
+            </view>
+          </view>
+          <view class="temDetailItem">
+            <view class="temDetailItemLeft">
+              空气湿度
+            </view>
+            <view class="temDetailItemRight">
+              {{tempertureDetail.humidity}}%
+            </view>
+          </view>
+          <view class="temDetailItem">
+            <view class="temDetailItemLeft">
+              日出时间
+            </view>
+            <view class="temDetailItemRight">
+              {{futureDaily[0].sunrise}}
+            </view>
+          </view>
+          <view class="temDetailItem">
+            <view class="temDetailItemLeft">
+              日出时间
+            </view>
+            <view class="temDetailItemRight">
+              {{futureDaily[0].sunset}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 各项指数 -->
+    <view class="liftIndexTop">生活指数</view>
+    <view class="liftIndex">
+      <view class="liftIndexItem" wx:for="{{dailyArr}}" wx:key="key">
+        <view class="liftIndexBox">
+          <view class="itemIcon">
+            <view class="iconfont liftIndexItemIcon {{index >= 0 ? '.icon-icon' + (index+1) : ''}}"></view>
+          </view>
+          <view class="itemType">{{item.category}}</view>
+          <view class="itemName">{{item.name}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="container_bgcImg">
+    <image style="filter:blur({{blurPX}}px)" src="{{imgUrl}}"></image>
+  </view>
+</view>
+
+<wxs module="m1">
+// 封装方法  获取日期
+var getDay = function(day) {
+  var reg = getRegExp('T', 'g')  // 获取T字符
+  var reg2 = getRegExp('\+', 'g')  // 获取+字符
+  var index = day.search(reg) + 1  // 获取索引
+  var index2 = day.search(reg2)  // 获取索引
+  return day.substring(index, index2)
+}
+
+var getIcon = function(textDay) {
+  switch (textDay) {
+    case "晴":
+      return "icon-taiyang icon1"
+      break;
+    case "多云":
+      return "icon-duoyun icon2"
+      break;
+    case "阴":
+      return "icon-duoyun3 icon2"
+      break;
+    case "雨":
+      return "icon-xiayu1 icon3"
+      break;
+    case "小雨":
+      return "icon-xiayu1 icon3"
+      break;
+    case "雪":
+      return "icon-ic_ac_unit_px icon4"
+      break;
+    default:
+      break;
+  }
+}
+module.exports.getIcon = getIcon;
+module.exports.getDay = getDay;
+</wxs>
