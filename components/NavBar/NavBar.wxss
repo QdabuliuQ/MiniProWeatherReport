@@ -1,3 +1,4 @@
+@import "../../style/iconFont.wxss";
 .navbar{
   width: 100%;
   /* height:130rpx; */
@@ -6,7 +7,25 @@
   position: relative;
 }
 .containerNav{
+  display: flex;
   text-align: center;
   font-size: 35rpx;
   line-height: 88rpx;
+}
+.navLeft{
+  flex: 3;
+  width: 100rpx;
+  height: 88rpx;
+}
+.navName{
+  flex: 6;
+}
+.navRight{
+  flex: 3;
+}
+.backIcon{
+  width: 80rpx;
+  height: 80rpx;
+  color: #fff;
+  font-size: 35rpx;
 }

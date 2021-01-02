@@ -1,0 +1,114 @@
+.tempDetail{
+  width: 100%;
+}
+.container_bgcImg{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  z-index: -1;
+}
+.container_bgcImg image{
+  width: 100%;
+  height: 100%;
+  transform: scale(1.2);
+}
+.tempDetailCon{
+  padding: 12rpx 30rpx;
+}
+.tempTopBox{
+  color: #Fff;
+}
+.tempCenterBox{
+  width: 100%;
+  height: 400rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border-bottom: 1px solid #dfdfdf31;
+}
+.textBox{
+  position: relative;
+}
+.number{
+  color: #Fff;
+  font-size: 100rpx;
+  font-weight: 400;
+  float: left;
+}
+.textDay{
+  float: left;
+  margin-left: 10rpx;
+  color: #Fff;
+  position: absolute;
+  right: -20rpx;
+  bottom: 20rpx;
+}
+.sumMoonDetail{
+  width: 100%;
+  height: 180rpx;
+  display: flex;
+  box-sizing: border-box;
+  border-bottom: 1px solid #dfdfdf31;
+}
+.sumMoonDetailItem{
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.detailBox{
+  margin: 0 auto;
+}
+.DetailIcon{
+  margin: 0 auto;
+  width: 62rpx;
+  color: #fff;
+}
+.DetailIcon view{
+  width: 65rpx;
+  font-size: 60rpx;
+}
+.time{
+  text-align: center;
+  color: #Fff;
+}
+.detailText{
+  font-size: 22rpx;
+  margin-top: 6rpx;
+  color: rgb(226, 226, 226);
+}
+.dayDetailTable{
+  margin-top: 30rpx;
+  width: 100%;
+}
+.leftTable{
+  width: 49%;
+  margin-right: 2%;
+  float: left;
+}
+.rightTable{
+  width: 49%;
+  float: left;
+}
+.tableItem{
+  width: 100%;
+  height: 60rpx;
+  display: flex;
+  line-height: 60rpx;
+  color: #Fff;
+  margin-bottom: 20rpx;
+  font-size: 26rpx;
+  box-sizing: border-box;
+  border-bottom: 1px solid #dfdfdfb4;
+}
+.tableItemName{
+  flex: 1;
+  text-align: center;
+  /* box-sizing: border-box;
+  border-right: 1px solid #dfdfdfea; */
+}
+.tableItemText{
+  flex: 1;
+  text-align: center;
+}

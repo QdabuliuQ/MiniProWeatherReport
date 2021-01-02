@@ -7,6 +7,10 @@ Component({
     CityTitle:{
       type: String,
       value: ""
+    },
+    showBack:{
+      type: Boolean,
+      value: false
     }
   },
 
@@ -21,7 +25,12 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    
+    // 返回按钮
+    goBack: function(){
+      wx.navigateBack({
+        delta: 1,
+      })
+    }
   },
 
   attached: function() {

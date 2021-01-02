@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-  <navbar class="navbar" CityTitle="{{cityDetail.adm2}}"></navbar>
+  <navbar showBack="{{showBack}}" class="navbar" CityTitle="{{cityDetail.name}}"></navbar>
   <view class="index_container">
     <!-- 当前温度 -->
     <view class="TemperatureView">
@@ -44,12 +44,14 @@
     <!-- 未来7天 -->
     <view class="tempFutureList">
       <view class="tempFutureItem" wx:for="{{futureDaily}}" wx:key="key">
-        <view class="leftDay">{{item.DayOfWeek}}</view>
-        <view class="centerIcon">
-          <view class="tempFutureItemIcon iconfont {{m1.getIcon(item.textDay)}}"></view>
-        </view>
-        <view class="tempMax">{{item.tempMax}}°</view>
-        <view class="tempMin">{{item.tempMin}}°</view>
+        <navigator class="tempFutureItem" url="/pages/tempDetail/index?index={{index}}">
+          <view class="leftDay">{{item.DayOfWeek}}</view>
+          <view class="centerIcon">
+            <view class="tempFutureItemIcon iconfont {{m1.getIcon(item.textDay)}}"></view>
+          </view>
+          <view class="tempMax">{{item.tempMax}}°</view>
+          <view class="tempMin">{{item.tempMin}}°</view>
+        </navigator>
       </view>
     </view>
     <!-- 详情数据 -->
@@ -111,7 +113,7 @@
         </view>
       </view>
     </view>
-    <!-- 各项指数 -->
+    <!-- 生活指数 -->
     <view class="liftIndexTop">生活指数</view>
     <view class="liftIndex">
       <view class="liftIndexItem" wx:for="{{dailyArr}}" wx:key="key">

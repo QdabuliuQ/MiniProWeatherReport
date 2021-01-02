@@ -17,6 +17,7 @@ Page({
     blurPX: 0,  // 背景模糊指数
     scrollTop: 0,  // 距离顶部距离
     scrollHeight: 0,  // 可滚动高度
+    showBack: false,  // 隐藏返回按钮
   },
 
   blurPXIndex: 0,
@@ -71,12 +72,11 @@ Page({
         }).then(res => {
           this.setData({
             'cityDetail.id': res.data.location[0].id,
-            'cityDetail.adm1': res.data.location[0].adm1,
-            'cityDetail.adm2': res.data.location[0].adm2,
-            'cityDetail.country': res.data.location[0].country,
-          })
-          wx.setNavigationBarTitle({
-            title: this.data.cityDetail.adm2
+            'cityDetail.name': res.data.location[0].name,
+          }, function(){
+            wx.setNavigationBarTitle({
+              title: this.data.cityDetail.name
+            })
           })
           requestDetail({   // 获取城市天气信息
             url: '/v7/weather/now?',
@@ -137,6 +137,16 @@ Page({
               dailyArr: res.data.daily
             })
           })
+
+          requestDetail({
+            url: '/v7/minutely/5m?',
+            data: {
+              location: loc,
+              key: 'e8fb6c5da8904432803fa50288df8e83',
+            }
+          }).then(res => {
+            console.log(res);
+          })
         })
       }
     })
@@ -144,7 +154,6 @@ Page({
 
   onShow(){
     let date = new Date()
-    console.log(date.getHours());
     let nowTime = date.getHours()
     if (nowTime >= 6 && nowTime < 18) {
       this.setData({
@@ -174,7 +183,6 @@ Page({
         scrollHeight
       })
     })
-    
   },
 
   onPageScroll:function(e){ // 获取滚动条当前位置

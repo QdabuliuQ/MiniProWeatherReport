@@ -1,0 +1,86 @@
+<view class="tempDetail">
+  <navbar showBack="{{showBack}}" CityTitle="{{cityName}}"></navbar>
+  <view class="tempDetailCon">
+    <view class="tempTopBox">
+      预报时间：{{dayDetail.fxDate}}
+    </view>
+    <view class="tempCenterBox">
+      <view class="textBox">
+        <view class="number">{{dayDetail.tempMin}}°~{{dayDetail.tempMax}}°</view>
+        <view class="textDay">{{dayDetail.textDay}}</view>
+      </view>
+    </view>
+    <view class="sumMoonDetail">
+      <view class="sumMoonDetailItem">
+        <view class="detailBox">
+          <view class="DetailIcon">
+            <view class="iconfont icon-richu"></view>
+          </view>
+          <view class="time">{{dayDetail.sunrise}}</view>
+          <view class="detailText">日出时间</view>
+        </view>
+      </view>
+      <view class="sumMoonDetailItem">
+        <view class="detailBox">
+          <view class="DetailIcon">
+            <view class="iconfont icon-rila"></view>
+          </view>
+          <view class="time">{{dayDetail.sunset}}</view>
+          <view class="detailText">日落时间</view>
+        </view>
+      </view>
+      <view class="sumMoonDetailItem">
+        <view class="detailBox">
+          <view class="DetailIcon">
+            <view class="iconfont icon-yuechu"></view>
+          </view>
+          <view class="time">{{dayDetail.moonrise}}</view>
+          <view class="detailText">月出时间</view>
+        </view>
+      </view>
+      <view class="sumMoonDetailItem">
+        <view class="detailBox">
+          <view class="DetailIcon">
+            <view class="iconfont icon-yueluo"></view>
+          </view>
+          <view class="time">{{dayDetail.moonset}}</view>
+          <view class="detailText">月落时间</view>
+        </view>
+      </view>
+    </view>
+    <view class="dayDetailTable">
+      <view class="leftTable">
+        <view class="tableItem">
+          <view class="tableItemName">相对湿度</view>
+          <view class="tableItemText">{{dayDetail.humidity}}%</view>
+        </view>
+        <view class="tableItem">
+          <view class="tableItemName">降水量</view>
+          <view class="tableItemText">{{dayDetail.precip}}毫米</view>
+        </view>
+        <view class="tableItem">
+          <view class="tableItemName">大气压强</view>
+          <view class="tableItemText">{{dayDetail.pressure}}百帕</view>
+        </view>
+      </view>
+      <view class="rightTable">
+        <view class="tableItem">
+          <view class="tableItemName">能见度</view>
+          <view class="tableItemText">{{dayDetail.vis}}公里</view>
+        </view>
+        <view class="tableItem">
+          <view class="tableItemName">云量</view>
+          <view class="tableItemText">{{dayDetail.cloud}}%</view>
+        </view>
+        <view class="tableItem">
+          <view class="tableItemName">紫外线强度</view>
+          <view class="tableItemText">{{dayDetail.uvIndex}}</view>
+        </view>
+      </view>
+      <view style="clear: both"></view>
+    </view>
+  </view>
+  <view class="container_bgcImg">
+    <image style="filter:blur({{blurPX}}px)" src="{{imgUrl}}"></image>
+  </view>
+</view>

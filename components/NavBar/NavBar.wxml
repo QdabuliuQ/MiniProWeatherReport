@@ -1,4 +1,10 @@
 <view class="navbar">
   <view class="topNavbar" style="height:{{globalData.statusBarHeight}}px"></view>
-  <view class="containerNav">{{CityTitle}}</view>
+  <view class="containerNav">
+    <view class="navLeft">
+      <view wx:if="{{showBack}}" bindtap="goBack" class="backIcon iconfont icon-arrow-left"></view>
+    </view>
+    <view class="navName">{{CityTitle}}</view>
+    <view class="navRight"></view>
+  </view>
 </view>
