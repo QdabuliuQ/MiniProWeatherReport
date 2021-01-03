@@ -19,6 +19,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+.moreDetail{
+  position: absolute;
+  right: 28rpx;
+  bottom: 20rpx;
+  color: #Fff;
+  padding: 4rpx 20rpx;
+  border-radius: 40rpx;
+  border: 1px solid #fff;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+  
 }
 .TemperatureBox{
   width: 45%;

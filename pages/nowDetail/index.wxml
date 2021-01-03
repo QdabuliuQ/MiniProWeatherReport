@@ -1,0 +1,170 @@
+<view class="nowDetail">
+  <navbar showBack="{{true}}" CityTitle="{{cityName}}"></navbar>
+  <view class="container_detail">
+    <!-- 降水预报 -->
+    <view class="hoursReport">
+      <view class="title">未来两小时降雨预报</view>
+      <scroll-view 
+      style="margin-top: 20rpx"
+      enhanced="true"
+      show-scrollbar="false" 
+      scroll-x="true">
+        <view class="scrollHourBox">
+          <view class="hourItem" wx:for="{{hoursDetail.minutely}}" wx:key="key">
+            <view class="time">{{m2.getDay(item.fxTime)}}</view>
+            <view class="precip">{{item.type == 'rain' ? '降水量：' : '降雪量：'}}{{item.precip}}</view>
+            <view class="type">类型：{{item.type == 'rain' ? '雨' : '雪'}}</view>
+          </view>
+          <view style="clear: both"></view>
+        </view>
+      </scroll-view>
+      <view class="reportText">
+        {{hoursDetail.summary}}
+      </view>
+    </view>
+    <!-- 灾害预警 -->
+    <view class="warningReport" wx:if="{{warningDetail.length !== 0}}">
+      <view class="title">天气灾害预警</view>
+      <view class="warningItem" wx:for="{{warningDetail}}" wx:key="key">
+        <view class="sender">{{item.sender}}</view>
+        <view class="itemtitle"><view class="iconfont icon-jinggao"></view>{{item.title}}</view>
+        <view class="text">{{item.text}}</view>
+        <view class="pushTime">发布时间：{{m2.getDate(item.pubTime)}}</view>
+      </view>
+    </view>
+    <!-- 空气质量预报 -->
+    <view class="airQuality">
+      <view class="title">空气质量实时数据</view>
+      <view class="qualityTable">
+        <view class="tableItem">
+          <view class="itemName">空气质量指数：</view>
+          <view class="itemText">{{airDetail.aqi}}</view>
+        </view>
+        <view class="tableItem">
+          <view class="itemName">空气质量指数等级：</view>
+          <view class="itemText">{{airDetail.level}}</view>
+        </view>
+        <view class="tableItem">
+          <view class="itemName">空气质量指数级别：</view>
+          <view class="itemText">{{airDetail.category}}</view>
+        </view>
+        <view class="tableItem">
+          <view class="itemName">空气质量的主要污染物：</view>
+          <view class="itemText">{{airDetail.primary}}</view>
+        </view>
+        <view wx:if="{{showMoreDetail}}">
+          <view class="tableItem">
+            <view class="itemName">实时 pm10 含量：</view>
+            <view class="itemText">{{airDetail.pm10}}</view>
+          </view>
+          <view class="tableItem">
+            <view class="itemName">实时 pm2.5 含量：</view>
+            <view class="itemText">{{airDetail.pm2p5}}</view>
+          </view>
+          <view class="tableItem">
+            <view class="itemName">实时 二氧化氮 含量：</view>
+            <view class="itemText">{{airDetail.no2}}</view>
+          </view>
+          <view class="tableItem">
+            <view class="itemName">实时 二氧化硫 含量：</view>
+            <view class="itemText">{{airDetail.so2}}</view>
+          </view>
+          <view class="tableItem">
+            <view class="itemName">实时 一氧化碳 含量：</view>
+            <view class="itemText">{{airDetail.co}}</view>
+          </view>
+          <view class="tableItem">
+            <view class="itemName">实时 臭氧 含量：</view>
+            <view class="itemText">{{airDetail.o3}}</view>
+          </view>
+        </view>
+        <view bindtap="toggleDetail" class="showMore">{{btnText}}</view>
+      </view>
+    </view>
+    <!-- 景区天气预报 -->
+    <view class="Attraction">
+      <view class="title">4A和5A级景点的7天天气预报</view>
+      <view class="attractionView">
+        <view style="margin-top: 30rpx" class="attractionItem" wx:for="{{AttractionsDetail}}" wx:key="key">
+          <view style="border-bottom: 1px dashed #d4d4d4b0; padding-bottom: 8rpx" class="attractionTime">预报时间：{{item.fxDate}}</view>
+          <scroll-view
+          enhanced="true"
+          show-scrollbar="false" 
+          scroll-x="true">
+            <view class="attractionScrollView">
+              <view style="margin-top:10rpx" class="scrollItem">
+                <view class="scrollItemTitle">气温</view>
+                <view class="scrollItemText">{{item.tempMin}}°~{{item.tempMax}}°</view>
+              </view>
+              <view style="margin-top:10rpx" class="scrollItem">
+                <view class="scrollItemTitle">天气状况</view>
+                <view class="scrollItemText">{{item.textDay}}</view>
+              </view>
+              <view style="margin-top:10rpx" class="scrollItem">
+                <view class="scrollItemTitle">日出时间</view>
+                <view class="scrollItemText">{{item.sunrise}}</view>
+              </view>
+              <view style="margin-top:10rpx" class="scrollItem">
+                <view class="scrollItemTitle">日落时间</view>
+                <view class="scrollItemText">{{item.sunset}}</view>
+              </view>
+              <view style="margin-top:10rpx" class="scrollItem">
+                <view class="scrollItemTitle">月出时间</view>
+                <view class="scrollItemText">{{item.moonrise}}</view>
+              </view>
+              <view style="margin-top:10rpx" class="scrollItem">
+                <view class="scrollItemTitle">月落时间</view>
+                <view class="scrollItemText">{{item.moonset}}</view>
+              </view>
+              <view style="margin-top:10rpx" class="scrollItem">
+                <view class="scrollItemTitle">月相名称</view>
+                <view class="scrollItemText">{{item.moonPhase}}</view>
+              </view>
+              <view style="margin-top:10rpx" class="scrollItem">
+                <view class="scrollItemTitle">风向风力</view>
+                <view class="scrollItemText">{{item.windDirDay}}{{item.windScaleDay}}级</view>
+              </view>
+              <view style="margin-top:10rpx" class="scrollItem">
+                <view class="scrollItemTitle">降水量</view>
+                <view class="scrollItemText">{{item.precip}}毫米</view>
+              </view>
+              <view style="margin-top:10rpx" class="scrollItem">
+                <view class="scrollItemTitle">大气压强</view>
+                <view class="scrollItemText">{{item.pressure}}百帕</view>
+              </view>
+              <view style="margin-top:10rpx" class="scrollItem">
+                <view class="scrollItemTitle">相对湿度</view>
+                <view class="scrollItemText">{{item.humidity}}%</view>
+              </view>
+              <view style="clear: both"></view>
+            </view>
+          </scroll-view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="container_bgcImg">
+    <image style="filter:blur({{blurPX}}px)" src="{{imgUrl}}"></image>
+  </view>
+</view>
+
+<wxs module="m2">
+// 封装方法  获取日期
+var getDay = function(day) {
+  var reg = getRegExp('T', 'g')  // 获取T字符
+  var reg2 = getRegExp('\+', 'g')  // 获取+字符
+  var index = day.search(reg) + 1  // 获取索引
+  var index2 = day.search(reg2)  // 获取索引
+  return day.substring(index, index2)
+}
+module.exports.getDay = getDay;
+
+var getDate = function(day) {
+  var reg = getRegExp('T', 'g')  // 获取T字符
+  var index = day.search(reg)  // 获取索引
+  var reg2 =  getRegExp('\+')  // 获取T字符
+  var index2 = day.search(reg2) + 1  // 获取索引
+  return day.substring(0, index) + " " + day.substring(index2)
+}
+module.exports.getDate = getDate;
+</wxs>

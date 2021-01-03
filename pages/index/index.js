@@ -74,8 +74,10 @@ Page({
             'cityDetail.id': res.data.location[0].id,
             'cityDetail.name': res.data.location[0].name,
           }, function(){
-            wx.setNavigationBarTitle({
-              title: this.data.cityDetail.name
+            wx.setStorageSync('cityDetail', {
+              name: this.data.cityDetail.name,
+              location: loc,
+              key: 'e8fb6c5da8904432803fa50288df8e83'
             })
           })
           requestDetail({   // 获取城市天气信息
@@ -137,16 +139,6 @@ Page({
               dailyArr: res.data.daily
             })
           })
-
-          requestDetail({
-            url: '/v7/minutely/5m?',
-            data: {
-              location: loc,
-              key: 'e8fb6c5da8904432803fa50288df8e83',
-            }
-          }).then(res => {
-            console.log(res);
-          })
         })
       }
     })
@@ -155,9 +147,13 @@ Page({
   onShow(){
     let date = new Date()
     let nowTime = date.getHours()
-    if (nowTime >= 6 && nowTime < 18) {
-      this.setData({
+    if (nowTime >= 6 && nowTime < 15) {
+      this.setData({  
         imgUrl: 'https://img.coolcr.cn/2020/12/31/343b42a5b30c5.jpg'
+      })
+    } else if (nowTime >= 15 && nowTime < 18) {
+      this.setData({
+        imgUrl: 'https://img.coolcr.cn/2021/01/02/c33a7248a5f66.jpg'
       })
     } else {
       this.setData({

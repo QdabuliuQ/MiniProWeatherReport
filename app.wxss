@@ -4,6 +4,10 @@ page,view,text,image,swiper,swiper-item,navigator{
   margin: 0;
   box-sizing: border-box;
 }
+page{
+  /* 定义全局css变量 */
+  --bColor: #dfdfdf31;  
+}
 ::-webkit-scrollbar {
   display: none;
 }

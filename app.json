@@ -1,7 +1,8 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/tempDetail/index"
+    "pages/tempDetail/index",
+    "pages/nowDetail/index"
   ],
   "window":{
     "backgroundTextStyle":"light",

@@ -1,0 +1,148 @@
+.nowDetail{
+  width: 100%;
+  position: relative;
+}
+.container_bgcImg{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  z-index: -1;
+}
+.container_bgcImg image{
+  width: 100%;
+  height: 100%;
+  transform: scale(1.2);
+}
+.container_detail{
+  padding: 15rpx 30rpx;
+}
+.hoursReport{
+  width: 100%;
+}
+.title{
+  font-weight: 600;
+  color: #Fff;
+  padding-bottom: 10rpx;
+  border-bottom: 1px solid var(--bColor);
+}
+.scrollHourBox{
+  width: calc(((100vw - 60rpx) / 4) * 24);
+}
+.hourItem{
+  width: calc((100vw - 60rpx) / 4);
+  text-align: center;
+  float: left;
+  color: #Fff;
+}
+.time{
+  font-size: 30rpx;
+}
+.precip{
+  margin-top: 8rpx;
+  font-size: 27rpx;
+}
+.type{
+  font-size: 22rpx;
+  color: rgb(204, 204, 204);
+}
+.reportText{
+  margin-top: 11rpx;
+  text-align: right;
+  font-size: 25rpx;
+  color: #Fff;
+}
+.warningItem{
+  margin-top: 10rpx;
+  margin-bottom: 15rpx;
+  border-bottom: 1px solid var(--bColor);
+  padding-bottom: 15rpx;
+}
+.warningReport{
+  margin-top: 60rpx;
+  color: #fff;
+}
+.sender{
+  text-align: center;
+}
+.itemtitle{
+  margin-top: 8rpx;
+  font-weight: 550;
+  display: flex;
+  align-items: center;
+}
+.icon-jinggao{
+  width: 80rpx;
+  float: left;
+  color: rgb(231, 184, 83);
+  font-size: 50rpx;
+}
+.text{
+  margin-top: 8rpx;
+}
+.pushTime{
+  margin-top: 20rpx;
+  text-align: right;
+  font-size: 24rpx;
+}
+.airQuality{
+  margin-top: 60rpx;
+  width: 100%;
+}
+.qualityTable{
+  width: 100%;
+}
+.tableItem{
+  width: 100%;
+  display: flex;
+  height: 60rpx;
+  box-sizing: border-box;
+  border-bottom: 1px dashed var(--bColor);
+  font-size: 25.5rpx;
+  color: rgb(240, 240, 240);
+}
+.itemName{
+  flex: 6;
+  line-height: 60rpx;
+}
+.itemText{
+  flex: 4;
+  line-height: 60rpx;
+  text-align: center;
+}
+.showMore{
+  margin-top: 10rpx;
+  width: 100%;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #Fff;
+  font-size: 26rpx;
+  border: 1px solid rgba(221, 221, 221, 0.685);
+  border-radius: 16rpx;
+  box-sizing: border-box;
+}
+.Attraction{
+  margin-top: 60rpx;
+  margin-bottom: 40rpx;
+}
+.attractionTime{
+  color: #Fff;
+  font-size: 26rpx;
+}
+.attractionScrollView{
+  width: calc(((100vw - 60rpx) / 4) * 11);
+}
+.scrollItem{
+  width: calc((100vw - 60rpx) / 4);
+  color: #fff;
+  text-align: center;
+  height: 86rpx;
+  float: left;
+}
+.scrollItemText{
+  margin-top: 10rpx;
+  font-size: 32rpx;
+  font-weight: 550;
+}

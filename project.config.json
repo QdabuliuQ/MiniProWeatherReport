@@ -66,6 +66,12 @@
           "pathName": "pages/tempDetail/index",
           "query": "index=0",
           "scene": null
+        },
+        {
+          "name": "更多数据",
+          "pathName": "pages/nowDetail/index",
+          "query": "",
+          "scene": null
         }
       ]
     }
