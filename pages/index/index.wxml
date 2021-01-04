@@ -176,6 +176,15 @@ var getIcon = function(textDay) {
     case "雪":
       return "icon-ic_ac_unit_px icon4"
       break;
+    case "阵雪":
+      return "icon-ic_ac_unit_px icon4"
+      break;
+    case "雾":
+      return "icon-wu icon5"
+      break;
+    case "霾":
+      return "icon-mai icon5"
+      break;
     default:
       break;
   }

@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/tempDetail/index",
     "pages/nowDetail/index",
-    "pages/search/index"
+    "pages/search/index",
+    "pages/searchResult/index"
   ],
   "window":{
     "backgroundTextStyle":"light",

@@ -48,34 +48,32 @@
         </view>
       </view>
     </view>
+
     <view class="dayDetailTable">
-      <view class="leftTable">
-        <view class="tableItem">
-          <view class="tableItemName">相对湿度</view>
-          <view class="tableItemText">{{dayDetail.humidity}}%</view>
-        </view>
-        <view class="tableItem">
-          <view class="tableItemName">降水量</view>
-          <view class="tableItemText">{{dayDetail.precip}}毫米</view>
-        </view>
-        <view class="tableItem">
-          <view class="tableItemName">大气压强</view>
-          <view class="tableItemText">{{dayDetail.pressure}}百帕</view>
-        </view>
+      <view style="margin-bottom: 10rpx; color: #fff; font-size: 25rpx; padding-bottom: 15rpx; border-bottom: 1px solid #c7c7c744">当天更多详情数据</view>
+      <view class="tableItem">
+        <view class="tableItemName">相对湿度</view>
+        <view class="tableItemText">{{dayDetail.humidity}}%</view>
       </view>
-      <view class="rightTable">
-        <view class="tableItem">
-          <view class="tableItemName">能见度</view>
-          <view class="tableItemText">{{dayDetail.vis}}公里</view>
-        </view>
-        <view class="tableItem">
-          <view class="tableItemName">云量</view>
-          <view class="tableItemText">{{dayDetail.cloud}}%</view>
-        </view>
-        <view class="tableItem">
-          <view class="tableItemName">紫外线强度</view>
-          <view class="tableItemText">{{dayDetail.uvIndex}}</view>
-        </view>
+      <view class="tableItem">
+        <view class="tableItemName">降水量</view>
+        <view class="tableItemText">{{dayDetail.precip}}毫米</view>
+      </view>
+      <view class="tableItem">
+        <view class="tableItemName">大气压强</view>
+        <view class="tableItemText">{{dayDetail.pressure}}百帕</view>
+      </view>
+      <view class="tableItem">
+        <view class="tableItemName">能见度</view>
+        <view class="tableItemText">{{dayDetail.vis}}公里</view>
+      </view>
+      <view class="tableItem">
+        <view class="tableItemName">云量</view>
+        <view class="tableItemText">{{dayDetail.cloud}}%</view>
+      </view>
+      <view class="tableItem">
+        <view class="tableItemName">紫外线强度</view>
+        <view class="tableItemText">{{dayDetail.uvIndex}}</view>
       </view>
       <view style="clear: both"></view>
     </view>

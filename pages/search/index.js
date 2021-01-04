@@ -41,11 +41,11 @@ Page({
       this.setData({
         searchResult: res.data.location
       })
-      if (res.data.location.length !== 0) {
+      if (res.data.code != 404) {
         this.animate(".searchResult",[
           {opacity: 0,height: '0rpx'},
-          {opacity: 0.5,height: ((res.data.location.length * 57.5 + 24) / 2)+'rpx'},
-          {opacity: 1,height: (res.data.location.length * 57.5 + 24)+'rpx'},
+          {opacity: 0.5,height: ((res.data.location.length * 67.5 + 24) / 2)+'rpx'},
+          {opacity: 1,height: (res.data.location.length * 67.5 + 24)+'rpx'},
         ],500,function(){
         })
       }
