@@ -1,0 +1,26 @@
+<view class="searchView">
+  <navbar showBack="{{true}}"></navbar>
+  <view class="searchContainer">
+    <view class="searchBox">
+      <view class="searchCon">
+        <view class="searchIcon iconfont icon-sousuo"></view>
+        <input  bindinput='input' placeholder="输入城市名称进行搜索"  value="{{inputValue}}" placeholder-class="phcolor" class="searchText">输入城市名称进行搜索</input>
+      </view>
+      <view class="searchResult" animation="{{ani}}" wx:if="{{searchResult.length != 0}}">
+        <view class="searchItem" hover-class="searchItemHover" wx:for="{{searchResult}}" wx:key="key">
+          <view class="name">{{item.name}}</view>
+          <view class="location">纬度：{{item.lat}} / 经度：{{item.lon}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="topCityList" wx:if="{{searchResult.length == 0}}">
+      <view class="title">热门搜索城市</view>
+      <view class="cityItem" wx:for="{{topCityList}}" wx:key="key">
+        {{item.name}}
+      </view>
+    </view>
+  </view>
+  <view class="container_bgcImg">
+    <image style="filter:blur({{blurPX}}px)" src="{{imgUrl}}"></image>
+  </view>
+</view>

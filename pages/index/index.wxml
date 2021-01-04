@@ -2,6 +2,14 @@
 <view class="container">
   <navbar showBack="{{showBack}}" class="navbar" CityTitle="{{cityDetail.name}}"></navbar>
   <view class="index_container">
+    <navigator url="/pages/search/index">
+      <view class="searchBox">
+        <view class="searchCon">
+          <view class="searchIcon iconfont icon-sousuo"></view>
+          <view class="searchTitle">搜索城市天气信息</view>
+        </view>
+      </view>
+    </navigator>
     <!-- 当前温度 -->
     <view class="TemperatureView">
       <view class="TemperatureBox">

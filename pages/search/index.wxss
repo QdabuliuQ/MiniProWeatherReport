@@ -1,0 +1,103 @@
+.searchView{
+  position: relative;
+}
+.container_bgcImg{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  z-index: -1;
+}
+.container_bgcImg image{
+  width: 100%;
+  height: 100%;
+  transform: scale(1.2);
+}
+.searchContainer{
+  padding: 15rpx 30rpx;
+}
+.searchIcon{
+  float: left;
+  margin-left: 20rpx;
+  position: relative;
+  top: 1px;
+  color: #Fff;
+}
+.searchCon{
+  width: 95%;
+}
+.searchText{
+  width: 85%;
+  float: left;
+  margin-left: 20rpx;
+  color: #fff;
+}
+.phcolor{
+  color: rgb(196, 196, 196);
+  font-size: 26rpx;
+}
+.searchBox{
+  margin: 0 auto;
+  width: 100%;
+  height: 60rpx;
+  background-color: rgba(0, 0, 0, 0.199);
+  border-radius: 60rpx;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.searchResult{
+  position: absolute;
+  padding: 12rpx 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.301);
+  top: 120%;
+  border-radius: 16rpx;
+  transition: all 0.2s linear;
+}
+.searchItem{
+  padding: 0 30rpx;
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  color: #fff;
+  display: flex;
+  margin-top: 7.5rpx;
+  margin-bottom: 7.5rpx;
+  transition: all 0.2s linearbeij;
+}
+.name{
+  flex: 3;
+  font-weight: 550;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.location{
+  flex: 7;
+  text-align: right;
+  font-size: 24rpx;
+  color: rgb(212, 212, 212);
+}
+.topCityList{
+  margin-top: 20rpx;
+}
+.title{
+  font-size: 26rpx;
+  font-weight: 550;
+  color: #fff;
+  margin-bottom: 20rpx;
+}
+.cityItem{
+  float: left;
+  padding: 10rpx 30rpx;
+  border-radius: 30rpx;
+  background-color: rgba(0, 0, 0, 0.212);
+  color: #fff;
+  margin-right: 25rpx;
+  font-size: 25rpx;
+  margin-bottom: 15rpx;
+}
+.searchItemHover{
+  background-color: rgba(0, 0, 0, 0.26);
+}

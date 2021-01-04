@@ -32,7 +32,34 @@
   font-size: 24rpx;
   display: flex;
   align-items: center;
-  
+}
+.searchBox{
+  width: 90%;
+  height: 55rpx;
+  background-color: rgba(0, 0, 0, 0.247);
+  margin: 0 auto;
+  border-radius: 55rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.searchCon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.searchTitle{
+  color: rgb(197, 197, 197);
+  font-size: 24rpx;
+  float: left;
+  margin-left: 15rpx;
+}
+.searchIcon{
+  color: rgb(197, 197, 197);
+  float: left;
+  font-size: 25rpx;
+  position: relative;
+  top: 0.5px;
 }
 .TemperatureBox{
   width: 45%;

@@ -103,3 +103,18 @@
     module.exports.getDay = getDay;
   </wxs>
   ```
+
+* 5、小程序动画API的使用
+  * 调用 this.animate(参数一，参数二，参数三，参数四，) 方法，传入四个参数进行动画设置
+    * 参数一：选择器，选中添加动画的元素，可以是class选择器/id选择器等等
+    * 参数二：数组类型的动画帧，可以添加多个帧
+    * 参数三：动画执行完成的时间
+    * 参数四：动画执行完成后的回调函数
+  ```js
+  this.animate(".searchResult",[
+    {opacity: 0,height: '0rpx'},
+    {opacity: 0.5,height: ((res.data.location.length * 57.5 + 24) / 2)+'rpx'},
+    {opacity: 1,height: (res.data.location.length * 57.5 + 24)+'rpx'},
+    ],500,function(){
+  })
+  ```

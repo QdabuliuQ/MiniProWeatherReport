@@ -2,7 +2,8 @@
   "pages":[
     "pages/index/index",
     "pages/tempDetail/index",
-    "pages/nowDetail/index"
+    "pages/nowDetail/index",
+    "pages/search/index"
   ],
   "window":{
     "backgroundTextStyle":"light",

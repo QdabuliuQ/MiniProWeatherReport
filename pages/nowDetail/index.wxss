@@ -138,11 +138,14 @@
   width: calc((100vw - 60rpx) / 4);
   color: #fff;
   text-align: center;
-  height: 86rpx;
+  height: auto;
   float: left;
+}
+.scrollItemTitle{
+  font-size: 25rpx;
 }
 .scrollItemText{
   margin-top: 10rpx;
-  font-size: 32rpx;
+  font-size: 28rpx;
   font-weight: 550;
 }
