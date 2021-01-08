@@ -39,11 +39,12 @@
 }
 .textDay{
   float: left;
-  margin-left: 10rpx;
+  margin-left: 6rpx;
   color: #Fff;
-  position: absolute;
+  
+  /* position: absolute;
   right: -20rpx;
-  bottom: 20rpx;
+  bottom: 20rpx; */
 }
 .sumMoonDetail{
   width: 100%;

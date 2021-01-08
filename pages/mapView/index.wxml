@@ -1,0 +1,33 @@
+<view class="mapView">
+  <navbar class="navbar" showBack="{{true}}"></navbar>
+  <map 
+  id="mapCon"
+  style="width: 100vw; height: 100vh; background-color: #aaaaaa"
+  latitude="{{markers[0].latitude}}"
+  longitude="{{markers[0].longitude}}"
+  markers="{{markers}}"
+  bindregionchange="mapChange"
+  bindtap="mapClick"
+  bindupdated="mapUpdate"
+  ></map>
+  <view class="tempDetailBox" wx:if="{{showMap}}">
+    <view class="tempDetailCon">
+      <!-- <view style="font-size: 24rpx; color: rgb(109, 109, 109)">当地天气情况:</view> -->
+      <view class="tempCityName">
+        {{cityName}}
+      </view>
+      <view class="tempRange">
+        {{cityDetailTemp.tempMin}}° ~ {{cityDetailTemp.tempMax}}°
+      </view>
+      <view class="tempText">
+        {{cityDetailTemp.textDay}}
+      </view>
+      <view style="text-align: center; font-size: 25rpx;color: #707070">
+        {{cityDetailTemp.windDirDay}}
+      </view>
+      <view class="location">经度：{{cityDetailTemp.longitudeEnd}}</view>
+      <view class="location">纬度：{{cityDetailTemp.latitudeEnd}}</view>
+      <navigator url="/pages/searchResult/index?id={{cityID}}&name={{cityName}}&location={{cityDetailTemp.longitudeEnd}},{{cityDetailTemp.latitudeEnd}}" hover-class="none" class="more">更多数据 ></navigator>
+    </view>
+  </view>
+</view>

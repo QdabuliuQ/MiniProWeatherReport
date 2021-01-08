@@ -271,6 +271,7 @@
   padding-bottom: 15rpx;
 }
 .warningReport{
+  padding: 0 32rpx;
   margin-top: 60rpx;
   color: #fff;
 }
@@ -291,6 +292,8 @@
 }
 .text{
   margin-top: 8rpx;
+  font-size: 28rpx;
+  color: #dddddd;
 }
 .pushTime{
   margin-top: 20rpx;

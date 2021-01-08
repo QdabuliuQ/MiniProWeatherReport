@@ -155,7 +155,7 @@
         <view class="sender">{{item.sender}}</view>
         <view class="itemtitle"><view class="iconfont icon-jinggao"></view>{{item.title}}</view>
         <view class="text">{{item.text}}</view>
-        <view class="pushTime">发布时间：{{m2.getDate(item.pubTime)}}</view>
+        <view class="pushTime">发布时间：{{m3.getDate(item.pubTime)}}</view>
       </view>
     </view>
     <!-- 空气质量预报 -->
@@ -283,6 +283,15 @@ var getDay = function(day) {
   var index2 = day.search(reg2)  // 获取索引
   return day.substring(index, index2)
 }
+
+var getDate = function(day) {
+  var reg = getRegExp('T', 'g')  // 获取T字符
+  var index = day.search(reg)  // 获取索引
+  var reg2 =  getRegExp('\+')  // 获取T字符
+  var index2 = day.search(reg2) + 1  // 获取索引
+  return day.substring(0, index) + " " + day.substring(index2)
+}
+module.exports.getDate = getDate;
 
 var getIcon = function(textDay) {
   switch (textDay) {

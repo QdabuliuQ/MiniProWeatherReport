@@ -19,24 +19,26 @@ export const request = (params) => {
       },
       // complete 函数 表示不管异步请求成功或者失败都会执行
       complete: () => {
-        ajaxtime --;
-        if (ajaxtime === 0) {
-          wx.hideLoading()  // 隐藏加载动画
-        }
+        // ajaxtime --;
+        // if (ajaxtime === 0) {
+        //   wx.hideLoading()  // 隐藏加载动画
+        // }
+        // wx.hideLoading()  // 隐藏加载动画
       }
     })
   })
 }
 
 let ajaxtime2 = 0;
+let flag = false
 export const requestDetail = (params) => {
   ajaxtime2 ++;
+  
   wx.showLoading({
     title: '加载中',
     mask: true  // 是否添加蒙版效果
   })
   const baseURL = 'https://devapi.qweather.com'  // 请求根路径
-  //const baseURL = 'https://api.qweather.com'
   return new Promise((resolve,reject) => {
     wx.request({
       ...params,   // 解构对象

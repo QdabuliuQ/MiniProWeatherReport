@@ -48,7 +48,6 @@
         </view>
       </view>
     </view>
-
     <view class="dayDetailTable">
       <view style="margin-bottom: 10rpx; color: #fff; font-size: 25rpx; padding-bottom: 15rpx; border-bottom: 1px solid #c7c7c744">当天更多详情数据</view>
       <view class="tableItem">

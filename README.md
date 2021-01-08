@@ -21,6 +21,8 @@
 * 搜索功能（支持模糊搜索）
 * 热门城市推荐（点击跳转搜索）
 * 点击搜索结果列表，跳转到目标地的天气状况页面
+* 全国地图显示
+* 地图实时查看目标地的天气状况
 
 ### 项目要点：
 * 1、获取用户位置
@@ -132,3 +134,91 @@
     ],500,function(){
   })
   ```
+6、小程序Map组件的使用
+  * map组件需要先提供几个固定的参数
+    * latitude：地图显示的纬度
+    * longitude：地图显示的经度
+    * markers：标记点，是一个数组形式，可以有多个标记点
+    * bindregionchange：当地图发生变化的时候触发的事件（拖动/放大/缩小）都可以触发
+  * 通过 wx.getLocation 获取当前的经纬度，并将经纬度赋值给地图需要用到的经纬度
+    ```js
+    let that = this;
+    wx.getLocation({
+      type: 'gcj02',
+      success: function(res){
+        that.setData({
+          markers: [{
+            id: 0,
+            latitude: res.latitude,  // 纬度
+            longitude: res.longitude,  // 经度
+            iconPath: '../../icon/location1.png',  // 标记点的图标可以自定义
+            width: 30,  // 标记点的宽度
+            height: 30,  // 标记点的高度
+          }]
+        })
+        // 传入经纬度获取城市信息
+        that.getCityTempDetail(res.longitude.toFixed(4), res.latitude.toFixed(4))
+      }
+    })
+    ```
+  * 创建map组件的上下文对象，传入map组件的id
+    ```js
+    this.mapCon = wx.createMapContext('mapCon')
+    ```
+  * 在 bindregionchange 事件函数中调用 getLocationTemp 封装好的函数获取数据，并且实时移动标记点到屏幕的中心位置
+  ```js
+  getLocationTemp(e){
+    let that = this
+    this.mapCon.getCenterLocation({  // 获取屏幕中心点经纬度
+      success: (res) => {
+        // 滑动之前的位置
+        if (e.type == 'begin') {
+          this.latitudeStart = res.latitude  // 保存开始滑动前的位置
+          this.longitudeStart = res.longitude
+        }
+        // 滑动结束后的位置
+        if (e.type == 'end') {
+          this.latitudeEnd = res.latitude  // 保存滑动后的位置
+          this.longitudeEnd = res.longitude
+          // 判断滑动位置是否与滑动开始的位置发生改变
+          // 如果发生了改变则调用 translateMarker 方法移动标记点到中心点位置
+          if ((this.latitudeEnd != this.latitudeStart) || (this.longitudeEnd != this.longitudeStart)) {
+            this.mapCon.translateMarker({
+              markerId: 0,  // 标记点的id
+              autoRotate: false,  // 是否旋转
+              duration: 500,  // 动画时间
+              destination: {
+                latitude: this.latitudeEnd,  // 经度
+                longitude: this.longitudeEnd,  // 纬度
+              },
+              // 当标记点动画完成后执行的回调函数
+              animationEnd: function() {
+                // 清除上一次的定时器
+                clearInterval(this.intervalTimer)
+                // 防抖功能 避免多次没有必要的请求
+                this.intervalTimer = setTimeout(() => {
+                  that.getCityTempDetail(that.longitudeEnd, that.latitudeEnd)
+                }, 1000)
+              }
+            })
+          }
+        }
+      }
+    })
+  },
+  ```
+    * 判断开始位置的经纬度和结束位置的经纬度是否一样，如果一样表示没有移动，不需要对标记点进行移动和发送网络请求
+    * 如果位置发生了改变，则在 animationEnd(当标记点动画完成后执行的回调函数) 函数中去执行网络请求
+    * 为了防止多次拖动地图会发送多次网络请求，在 animationEnd函数中使用了防抖功能
+      ```js
+      // 当标记点动画完成后执行的回调函数
+      animationEnd: function() {
+        // 清除上一次的定时器
+        clearInterval(this.intervalTimer)
+        // 防抖功能 避免多次没有必要的请求
+        this.intervalTimer = setTimeout(() => {
+          that.getCityTempDetail(that.longitudeEnd, that.latitudeEnd)
+        }, 1000)
+      }
+      ```
+    

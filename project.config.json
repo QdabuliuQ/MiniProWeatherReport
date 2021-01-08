@@ -84,6 +84,12 @@
           "pathName": "pages/searchResult/index",
           "query": "id=101010100&name=北京&location=116.73201,23.37375",
           "scene": null
+        },
+        {
+          "name": "地图",
+          "pathName": "pages/mapView/index",
+          "query": "latitude=23.13171&longitude=113.26627",
+          "scene": null
         }
       ]
     }

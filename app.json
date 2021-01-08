@@ -4,7 +4,8 @@
     "pages/tempDetail/index",
     "pages/nowDetail/index",
     "pages/search/index",
-    "pages/searchResult/index"
+    "pages/searchResult/index",
+    "pages/mapView/index"
   ],
   "window":{
     "backgroundTextStyle":"light",
