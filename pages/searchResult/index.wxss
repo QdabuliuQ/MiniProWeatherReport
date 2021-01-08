@@ -83,7 +83,7 @@
   height: 200rpx;
   border-bottom: 1px solid #dfdfdf31;
 }
-.scrollHourBox{
+.scrollHourBox1{
   width: calc((100vw / 5) * 24);
 }
 .tempHourItem{

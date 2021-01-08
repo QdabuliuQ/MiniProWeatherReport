@@ -26,7 +26,7 @@
         enhanced="true"
         show-scrollbar="false" 
         scroll-x="true">
-          <view class="scrollHourBox">
+          <view class="scrollHourBox1">
             <view class="tempHourItem" wx:for="{{hourList}}" wx:key="key">
               <view class="itemBox">
                 <view class="time">{{m3.getDay(item.fxTime)}}</view>
