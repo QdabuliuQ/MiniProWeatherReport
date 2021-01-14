@@ -18,11 +18,23 @@ Page({
     scrollTop: 0,  // 距离顶部距离
     scrollHeight: 0,  // 可滚动高度
     showBack: false,  // 隐藏返回按钮
+    showContainer: false,
+    globalData: null,  // 顶部高度
   },
 
   blurPXIndex: 0,
   
   onLoad(){
+    // 在组件实例进入页面节点树时执行
+    wx.getSystemInfo({
+      success: (res) => {
+        this.setData({
+          'globalData.statusBarHeight': res.statusBarHeight,
+          'globalData.navBarHeight': 44 + res.statusBarHeight
+        })
+      }
+    })
+
     let date = new Date();
     let day = '';
     
@@ -136,7 +148,18 @@ Page({
             }
           }).then(res => {
             this.setData({
-              dailyArr: res.data.daily
+              dailyArr: res.data.daily,
+              showContainer: true
+            }, () => {
+              let scrollHeight = 0;
+              let that = this;
+              wx.createSelectorQuery().select('.tempDetail').boundingClientRect(function(rect){
+                scrollHeight = rect.top
+              }).exec(function(){  // exec是回调函数
+                that.setData({
+                  scrollHeight
+                })
+              })
             })
           })
         })
@@ -167,18 +190,6 @@ Page({
     let day = new Date(Date.parse(dayTime.replace(/-/g, '/'))); //将日期值格式化
     let today = new Array("星期天","星期一","星期二","星期三","星期四","星期五","星期六");
     return today[day.getDay()]; //day.getDay();根据Date返一个星期中的某其中0为星期日
-  },
-
-  onReady(){
-    let scrollHeight = 0;
-    let that = this;
-    wx.createSelectorQuery().select('.tempDetail').boundingClientRect(function(rect){
-      scrollHeight = rect.top
-    }).exec(function(){  // exec是回调函数
-      that.setData({
-        scrollHeight
-      })
-    })
   },
 
   onPageScroll:function(e){ // 获取滚动条当前位置

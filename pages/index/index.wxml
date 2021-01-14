@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
   <navbar showBack="{{showBack}}" class="navbar" CityTitle="{{cityDetail.name}}"></navbar>
-  <view class="index_container">
+  <view class="index_container" wx:if="{{showContainer}}">
     <!-- 跳转搜索页面 -->
     <navigator url="/pages/search/index">
       <view class="searchBox">
@@ -123,7 +123,7 @@
           </view>
           <view class="temDetailItem">
             <view class="temDetailItemLeft">
-              日出时间
+              日落时间
             </view>
             <view class="temDetailItemRight">
               {{futureDaily[0].sunset}}
@@ -169,6 +169,9 @@ var getIcon = function(textDay) {
     case "多云":
       return "icon-duoyun icon2"
       break;
+    case "晴间多云":
+      return "icon-duoyun icon2"
+      break;
     case "阴":
       return "icon-duoyun3 icon2"
       break;
@@ -177,6 +180,15 @@ var getIcon = function(textDay) {
       break;
     case "小雨":
       return "icon-xiayu1 icon3"
+      break;
+    case "阵雨":
+      return "icon-xiayu1 icon3"
+      break;
+    case "冻雨":
+      return "icon-xiayu1 icon3"
+      break;
+    case "雨雪天气":
+      return "icon-yuxue icon3"
       break;
     case "雪":
       return "icon-ic_ac_unit_px icon4"

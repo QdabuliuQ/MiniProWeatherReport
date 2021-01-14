@@ -5,11 +5,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    markers: [],  // 标点
+    // markers: [],  // 标点
     cityDetailTemp: null,  // 标点当地的天气气温
     cityName: '',  // 坐标的城市名称
     showMap: false,  // 左下角城市信息
     cityID: '',  // 城市id
+    latitudeFirst: '',  
+    longitudeFirst: '',
+    scale: 16,  // 缩放比例
+    locationLa: 0,  // 当前定位
+    locationLo: 0,
   },
 
   mapCon: null,  // map实例对象
@@ -19,6 +24,56 @@ Page({
   latitudeStart: 0,  // 移动最后的经纬度
   longitudeStart: 0,
   intervalTimer: -1,  // 定时器
+
+  // 定位按钮
+  positioning(){
+    // 调用 moveToLocation 方法移动到起始位置
+    this.mapCon.moveToLocation({
+      longitude: this.data.locationLo,
+      latitude: this.data.locationLa,
+    })
+    this.getCityTempDetail( this.data.locationLo, this.data.locationLa)
+  },
+
+  // 放大按钮
+  maxScale(){
+    let scale = this.data.scale;
+    if (scale <= 20) {
+      if (scale == 19) {
+        scale = 20;
+        this.setData({
+          scale,
+          latitudeFirst: this.data.cityDetailTemp.latitudeEnd,
+          longitudeFirst: this.data.cityDetailTemp.longitudeEnd
+        })
+        return
+      }
+      scale += 2;
+      this.setData({
+        scale,
+        latitudeFirst: this.data.cityDetailTemp.latitudeEnd,
+        longitudeFirst: this.data.cityDetailTemp.longitudeEnd
+      })
+    }
+  },
+
+  // 缩小按钮
+  minScale(){
+    let scale = this.data.scale;
+    if (scale >= 3) {
+      if (scale == 4) {
+        scale = 3;
+        this.setData({
+          scale
+        })
+        return
+      }
+      scale -= 2;
+      this.setData({
+        scale
+      })
+    }
+  },
 
   // 获取中心坐标的天气状况
   getCityTempDetail(longitudeEnd,latitudeEnd){
@@ -31,8 +86,8 @@ Page({
     }).then(res => {
       this.setData({
         cityDetailTemp: res.data.daily[0],
-        "cityDetailTemp.longitudeEnd": parseInt(longitudeEnd).toFixed(4),
-        "cityDetailTemp.latitudeEnd": parseInt(latitudeEnd).toFixed(4)
+        "cityDetailTemp.longitudeEnd": parseFloat(longitudeEnd).toFixed(4),
+        "cityDetailTemp.latitudeEnd": parseFloat(latitudeEnd).toFixed(4)
       })
     })
 
@@ -43,7 +98,6 @@ Page({
         key: "e8fb6c5da8904432803fa50288df8e83"
       }
     }).then(res => {
-      console.log(res);
       this.setData({
         cityName: res.data.location[0].name,
         cityID: res.data.location[0].id
@@ -69,23 +123,10 @@ Page({
           this.latitudeEnd = res.latitude  // 保存滑动后的位置
           this.longitudeEnd = res.longitude
           if ((this.latitudeEnd != this.latitudeStart) || (this.longitudeEnd != this.longitudeStart)) {
-            this.mapCon.translateMarker({
-              markerId: 0,
-              autoRotate: false,
-              duration: 500,
-              destination: {
-                latitude: this.latitudeEnd,  // 经度
-                longitude: this.longitudeEnd,  // 纬度
-              },
-              animationEnd: function() {
-                // 清除上一次的定时器
-                clearInterval(this.intervalTimer)
-                // 防抖功能 避免多次没有必要的请求
-                this.intervalTimer = setTimeout(() => {
-                  that.getCityTempDetail(that.longitudeEnd, that.latitudeEnd)
-                }, 1000)
-              }
-            })
+            // 防抖功能 避免多次没有必要的请求
+            this.intervalTimer = setTimeout(() => {
+              that.getCityTempDetail(that.longitudeEnd, that.latitudeEnd)
+            }, 1000)
           }
         }
       }
@@ -111,15 +152,12 @@ Page({
       type: 'gcj02',
       success: function(res){
         that.setData({
-          markers: [{
-            id: 0,
-            latitude: res.latitude,
-            longitude: res.longitude,
-            iconPath: '../../icon/location1.png',
-            width: 30,
-            height: 30,
-          }]
+          latitudeFirst: res.latitude,
+          longitudeFirst: res.longitude,
+          locationLa: res.latitude,
+          locationLo: res.longitude,
         })
+        
         that.getCityTempDetail(res.longitude.toFixed(4), res.latitude.toFixed(4))
       }
     })

@@ -43,14 +43,14 @@
     <!-- 未来7天 -->
     <view class="tempFutureList">
       <view class="tempFutureItem" wx:for="{{futureDaily}}" wx:key="key">
-        <navigator class="tempFutureItem">
+        <view class="tempFutureItem">
           <view class="leftDay">{{item.DayOfWeek}}</view>
           <view class="centerIcon">
             <view class="tempFutureItemIcon iconfont {{m3.getIcon(item.textDay)}}"></view>
           </view>
           <view class="tempMax">{{item.tempMax}}°</view>
           <view class="tempMin">{{item.tempMin}}°</view>
-        </navigator>
+        </view>
       </view>
     </view>
     <!-- 详情数据 -->
@@ -103,7 +103,7 @@
           </view>
           <view class="temDetailItem">
             <view class="temDetailItemLeft">
-              日出时间
+              日落时间
             </view>
             <view class="temDetailItemRight">
               {{futureDaily[0].sunset}}
@@ -113,7 +113,7 @@
       </view>
     </view>
     <!-- 生活指数 -->
-    <view class="liftIndexTop">生活指数</view>
+    <view class="liftIndexTop" wx:if="{{dailyArr != null}}">生活指数</view>
     <view class="liftIndex">
       <view class="liftIndexItem" wx:for="{{dailyArr}}" wx:key="key">
         <view class="liftIndexBox">
@@ -126,7 +126,7 @@
       </view>
     </view>
     <!-- 降水预报 -->
-    <view class="hoursReport">
+    <view class="hoursReport" wx:if="{{hoursDetail != null}}">
       <view class="liftIndexTop">未来两小时降雨预报</view>
       <view style="padding: 0 30rpx">
         <scroll-view 
@@ -159,7 +159,7 @@
       </view>
     </view>
     <!-- 空气质量预报 -->
-    <view class="airQuality">
+    <view class="airQuality" wx:if="{{airDetail != null}}">
       <view class="liftIndexTop">空气质量实时数据</view>
       <view class="qualityTable" style="padding: 0 30rpx">
         <view class="tableItem">
@@ -301,6 +301,9 @@ var getIcon = function(textDay) {
     case "多云":
       return "icon-duoyun icon2"
       break;
+    case "晴间多云":
+      return "icon-duoyun icon2"
+      break;
     case "阴":
       return "icon-duoyun3 icon2"
       break;
@@ -309,6 +312,15 @@ var getIcon = function(textDay) {
       break;
     case "小雨":
       return "icon-xiayu1 icon3"
+      break;
+    case "阵雨":
+      return "icon-xiayu1 icon3"
+      break;
+    case "冻雨":
+      return "icon-xiayu1 icon3"
+      break;
+    case "雨雪天气":
+      return "icon-yuxue icon3"
       break;
     case "雪":
       return "icon-ic_ac_unit_px icon4"

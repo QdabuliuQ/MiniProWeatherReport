@@ -13,8 +13,8 @@ Page({
     hourList: null,  // 预报24小时
     futureDaily: null,  // 未来7天数据
     dailyArr: null,  // 生活指数
-    hoursDetail: {},  // 降水预报
-    warningDetail: null,  // 灾害预报
+    hoursDetail: null,  // 降水预报
+    warningDetail: [],  // 灾害预报
     airDetail: null,  // 空气质量
     showMoreDetail: false,  // 显示/隐藏更多数据
     btnText: '点击查看更多数据',

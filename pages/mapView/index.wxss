@@ -63,3 +63,43 @@
   width: 100%;
   height: 100%;
 }
+.centerIcon{
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+.centerIcon image{
+  width: 60rpx;
+  height: 60rpx;
+}
+.btnList{
+  position: absolute;
+  width: 65rpx;
+  right: 30rpx;
+  bottom: 60rpx;
+}
+.scaleBtn{
+  width: 100%;
+  height: 65rpx;
+  background-color: #fff;
+  margin-top: 15rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16rpx;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.096);
+}
+.scaleIcon1{
+  color: #1f9ce4;
+}
+.scaleIcon2{
+  color: #1f9ce4;
+}
+.scaleIcon3{
+  font-size: 36rpx;
+  color: #1f9ce4;
+}
+.scaleBtnHover{
+  background-color: rgb(245, 245, 245);
+}

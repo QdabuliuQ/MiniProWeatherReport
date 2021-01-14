@@ -1,15 +1,17 @@
 <view class="mapView">
   <navbar class="navbar" showBack="{{true}}"></navbar>
+  <!-- 地图 -->
   <map 
   id="mapCon"
   style="width: 100vw; height: 100vh; background-color: #aaaaaa"
-  latitude="{{markers[0].latitude}}"
-  longitude="{{markers[0].longitude}}"
-  markers="{{markers}}"
+  latitude="{{latitudeFirst}}"
+  longitude="{{longitudeFirst}}"
+  scale="{{scale}}"
   bindregionchange="mapChange"
   bindtap="mapClick"
   bindupdated="mapUpdate"
   ></map>
+  <!-- 实时天气 -->
   <view class="tempDetailBox" wx:if="{{showMap}}">
     <view class="tempDetailCon">
       <!-- <view style="font-size: 24rpx; color: rgb(109, 109, 109)">当地天气情况:</view> -->
@@ -28,6 +30,21 @@
       <view class="location">经度：{{cityDetailTemp.longitudeEnd}}</view>
       <view class="location">纬度：{{cityDetailTemp.latitudeEnd}}</view>
       <navigator url="/pages/searchResult/index?id={{cityID}}&name={{cityName}}&location={{cityDetailTemp.longitudeEnd}},{{cityDetailTemp.latitudeEnd}}" hover-class="none" class="more">更多数据 ></navigator>
+    </view>
+  </view>
+  <!-- 地图标记点 -->
+  <view class="centerIcon">
+    <image src="../../icon/location2.png"></image>
+  </view>
+  <view class="btnList">
+    <view bindtap="maxScale" hover-class="scaleBtnHover" class="maxScale scaleBtn">
+      <view class="scaleIcon1 iconfont icon-fangda1"></view>
+    </view>
+    <view bindtap="minScale" hover-class="scaleBtnHover" class="minScale scaleBtn">
+      <view class="scaleIcon2 iconfont icon-suoxiao1"></view>
+    </view>
+    <view bindtap="positioning" hover-class="scaleBtnHover" class="scaleBtn">
+      <view class="scaleIcon3 iconfont icon-dingwei"></view>
     </view>
   </view>
 </view>
