@@ -313,6 +313,9 @@ var getIcon = function(textDay) {
     case "小雨":
       return "icon-xiayu1 icon3"
       break;
+    case "大雨":
+      return "icon-xiayu1 icon3"
+      break;
     case "阵雨":
       return "icon-xiayu1 icon3"
       break;

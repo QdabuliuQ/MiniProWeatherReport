@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "navbar": "../../components/NavBar/NavBar"
+    "navbar": "../../components/NavBar/NavBar",
+    "ec-canvas": "../../ec-canvas/ec-canvas"
   }
 }

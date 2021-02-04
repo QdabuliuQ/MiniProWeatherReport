@@ -12,9 +12,13 @@
   width: 100%;
   height: 100%;
   transform: scale(1.2);
+  background-color: rgb(255, 255, 255);
 }
-.index_container{
-  margin-top: ;
+.score{
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }
 .TemperatureView{
   width: 100%;
@@ -214,9 +218,12 @@
   /* border-right: 1px solid #dfdfdf31; */
 }
 .liftIndexTop{
+  position: relative;
   font-size: 26rpx;
+  margin: 0 auto;
   border-bottom: 1px solid #dfdfdf31;
-  padding:0 24rpx 15rpx;
+  width: calc(100% - 48rpx);
+  padding:0 0 15rpx;
   color: #fff;
   margin-top: 40rpx;
 }
@@ -285,6 +292,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.chartContainer{
+  width: 100%;
+  height: 300rpx;
 }
 .icon1{
   color: #ecc42f;

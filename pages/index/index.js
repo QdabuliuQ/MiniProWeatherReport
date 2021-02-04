@@ -1,9 +1,95 @@
 //index.js
 //获取应用实例
 import {request, requestDetail} from "../../request/request"
+import * as echarts from '../../ec-canvas/echarts';  // 引入echart
 const app = getApp()
-
+let chartLine;  // 图表实例
+let airScore = 0;
+// 设置图表数据
+function getOption(num) {
+  let option = {
+    series: [{
+      radius: '120%' ,  // 设置图表大小
+      center: ['50%', '86%'] ,  // 设置图表位置
+      type: 'gauge',  // 图表类型
+      startAngle: 180,  // 图表起始度数
+      endAngle: 0,  // 结束度数
+      min: 0,  // 最小值
+      max: 1,  // 最大值
+      splitNumber: 20,  // 一共分为20份
+      axisLine: {  // 表盘轴线配置
+        lineStyle: {
+          width: 15,  // 大小
+          color: [  // 颜色
+            [0.1, '#93e25a'],
+            [0.2, '#77f1a8'],
+            [0.3, '#fad35d'],
+            [0.4, '#f2ad2d'],
+            [0.6, '#df8742'],
+            [1, '#dd6e46']
+          ]
+        }
+      },
+      pointer: {  // 指针样式设置
+        icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
+        length: '70%',
+        width: 5,
+        offsetCenter: [0, '-3%'],
+        itemStyle: {
+          color: 'auto'
+        }
+      },
+      axisTick: {  // 小刻度线配置 
+        show: true,
+        length: 7,
+        lineStyle: {
+          color: 'auto',
+          width: 1
+        }
+      },
+      splitLine: {
+        length: 8,
+        lineStyle: {
+          color: 'auto',
+          width: 2
+        }
+      },
+      axisLabel: {
+        color: 'auto',
+        fontSize: 12,
+        distance: -35,
+        formatter: function (value) {
+          if (value === 0.05) {
+              return '优';
+          }
+          else if (value === 0.15) {
+              return '良';
+          }
+          else if (value === 0.25) {
+              return '轻度';
+          }
+          else if (value === 0.35) {
+              return '中度';
+          }
+          else if (value === 0.5) {
+              return '重度';
+          }
+          else if (value === 0.8) {
+              return '严重';
+          }
+        }
+      },
+      data: [{
+        value: (1 / 500) * airScore ,
+        name: ' '
+      }]
+    }]
+  };
+  return option
+}
+let that;
 Page({
+  
   data: {
     latitude:'',  // 纬度
     longitude:'',  // 经度
@@ -19,10 +105,25 @@ Page({
     scrollHeight: 0,  // 可滚动高度
     showBack: false,  // 隐藏返回按钮
     showContainer: false,
+    airDetail: {
+      aqi: '',
+      category: ''
+    }, // 空气质量
+    ec: {
+      onInit: function (canvas, width, height){
+        //初始化echarts元素，绑定到全局变量，方便更改数据
+        chartLine = echarts.init(canvas, null, {
+            width: width,
+            height: height
+        });
+        canvas.setChart(chartLine);
+        chartLine.setOption(getOption());
+      }
+    },  // echart图表实例
     globalData: null,  // 顶部高度
   },
-
   blurPXIndex: 0,
+  
   
   onLoad(){
     // 在组件实例进入页面节点树时执行
@@ -161,6 +262,23 @@ Page({
                 })
               })
             })
+          })
+
+          // 空气质量
+          requestDetail({
+            url: '/v7/air/now?',
+            data: {
+              location: wx.getStorageSync('cityDetail').location,
+              key: wx.getStorageSync('cityDetail').key
+            }
+          }).then(res => {
+            console.log(res);
+            this.setData({
+              'airDetail.aqi': res.data.now.aqi,
+              'airDetail.category': res.data.now.category,
+            })
+            airScore = res.data.now.aqi
+            getOption(res.data.now.aqi)
           })
         })
       }

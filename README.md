@@ -23,6 +23,7 @@
 * 点击搜索结果列表，跳转到目标地的天气状况页面
 * 全国地图显示
 * 地图实时查看目标地的天气状况
+* ECharts数据可视化
 
 ### 项目要点：
 * 1、获取用户位置
@@ -134,7 +135,7 @@
     ],500,function(){
   })
   ```
-6、小程序Map组件的使用
+* 6、小程序Map组件的使用
   * map组件需要先提供几个固定的参数
     * latitude：地图显示的纬度
     * longitude：地图显示的经度
@@ -210,15 +211,47 @@
   * 判断开始位置的经纬度和结束位置的经纬度是否一样，如果一样表示没有移动，不需要对标记点进行移动和发送网络请求
   * 如果位置发生了改变，则在 animationEnd(当标记点动画完成后执行的回调函数) 函数中去执行网络请求
   * 为了防止多次拖动地图会发送多次网络请求，在 animationEnd函数中使用了防抖功能
-      ```js
-      // 当标记点动画完成后执行的回调函数
-      animationEnd: function() {
-        // 清除上一次的定时器
-        clearInterval(this.intervalTimer)
-        // 防抖功能 避免多次没有必要的请求
-        this.intervalTimer = setTimeout(() => {
-          that.getCityTempDetail(that.longitudeEnd, that.latitudeEnd)
-        }, 1000)
-      }
-      ```
-    
+  ```js
+  // 当标记点动画完成后执行的回调函数
+  animationEnd: function() {
+    // 清除上一次的定时器
+    clearInterval(this.intervalTimer)
+    // 防抖功能 避免多次没有必要的请求
+    this.intervalTimer = setTimeout(() => {
+      that.getCityTempDetail(that.longitudeEnd, that.latitudeEnd)
+    }, 1000)
+  }
+  ```
+
+* 7、ECharts的使用
+  * 先引入[ECharts包](https://github.com/ecomfe/echarts-for-weixin)，将ec-canvas文件夹复制到项目的根目录中
+  * 在pages页面中的json中进行引入
+  ```js
+  "usingComponents": {
+    "ec-canvas": "../../ec-canvas/ec-canvas"
+  }
+  ```
+  * 将echarts.js引入对应的js页面当中
+  ```js
+  import * as echarts from '../../ec-canvas/echarts';  // 引入echart
+  ```
+  * 在xwml页面中放入组件模板，并绑定ec属性
+  ```html
+  <view class="chartContainer">
+    <ec-canvas ec='{{ec}}'></ec-canvas>
+  </view>
+  ```
+  * 在js文件中配置自己所需的option设置，并在`data`中定义`ec`变量作为echart实例对象
+  ```js
+  ec: {
+    onInit: function (canvas, width, height){
+      //初始化echarts元素，绑定到全局变量，方便更改数据
+      chartLine = echarts.init(canvas, null, {
+          width: width,
+          height: height
+      });
+      canvas.setChart(chartLine);
+      chartLine.setOption(getOption());  // 设置数据
+    }
+  },  // echart图表实例
+  ```

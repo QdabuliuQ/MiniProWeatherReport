@@ -1,4 +1,5 @@
 import {request, requestDetail} from "../../request/request"
+
 Page({
 
   /**

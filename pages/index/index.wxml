@@ -145,6 +145,13 @@
         </view>
       </view>
     </view>
+    <view class="liftIndexTop">
+      空气指数
+      <view class="score">{{airDetail.aqi}}  ●  {{airDetail.category}}</view>
+    </view>
+    <view class="chartContainer">
+      <ec-canvas ec='{{ec}}'></ec-canvas>
+    </view>
   </view>
   <view class="container_bgcImg">
     <image style="filter:blur({{blurPX}}px)" src="{{imgUrl}}"></image>
@@ -182,6 +189,9 @@ var getIcon = function(textDay) {
       return "icon-xiayu1 icon3"
       break;
     case "阵雨":
+      return "icon-xiayu1 icon3"
+      break;
+    case "大雨":
       return "icon-xiayu1 icon3"
       break;
     case "冻雨":
