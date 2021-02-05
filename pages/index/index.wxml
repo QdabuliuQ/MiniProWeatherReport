@@ -147,7 +147,7 @@
     </view>
     <view class="liftIndexTop">
       空气指数
-      <view class="score">{{airDetail.aqi}}  ●  {{airDetail.category}}</view>
+      <view class="score">{{airDetail.aqi}}  ·  {{airDetail.category}}</view>
     </view>
     <view class="chartContainer">
       <ec-canvas ec='{{ec}}'></ec-canvas>

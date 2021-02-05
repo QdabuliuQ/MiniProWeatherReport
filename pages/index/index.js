@@ -4,7 +4,8 @@ import {request, requestDetail} from "../../request/request"
 import * as echarts from '../../ec-canvas/echarts';  // 引入echart
 const app = getApp()
 let chartLine;  // 图表实例
-let airScore = 0;
+let airScore = 0;  // 空气成绩
+let pixelRatio = 0;  // 屏幕像素比
 // 设置图表数据
 function getOption(num) {
   let option = {
@@ -18,6 +19,7 @@ function getOption(num) {
       max: 1,  // 最大值
       splitNumber: 20,  // 一共分为20份
       axisLine: {  // 表盘轴线配置
+        roundCap: true,
         lineStyle: {
           width: 15,  // 大小
           color: [  // 颜色
@@ -29,6 +31,9 @@ function getOption(num) {
             [1, '#dd6e46']
           ]
         }
+      },
+      progress: {
+        roundCap: true ,
       },
       pointer: {  // 指针样式设置
         icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
@@ -56,7 +61,7 @@ function getOption(num) {
       },
       axisLabel: {
         color: 'auto',
-        fontSize: 12,
+        fontSize: 10,
         distance: -35,
         formatter: function (value) {
           if (value === 0.05) {
@@ -114,7 +119,8 @@ Page({
         //初始化echarts元素，绑定到全局变量，方便更改数据
         chartLine = echarts.init(canvas, null, {
             width: width,
-            height: height
+            height: height,
+            devicePixelRatio: pixelRatio  // 设置像素比
         });
         canvas.setChart(chartLine);
         chartLine.setOption(getOption());
@@ -129,6 +135,7 @@ Page({
     // 在组件实例进入页面节点树时执行
     wx.getSystemInfo({
       success: (res) => {
+        pixelRatio = res.pixelRatio
         this.setData({
           'globalData.statusBarHeight': res.statusBarHeight,
           'globalData.navBarHeight': 44 + res.statusBarHeight
@@ -272,7 +279,6 @@ Page({
               key: wx.getStorageSync('cityDetail').key
             }
           }).then(res => {
-            console.log(res);
             this.setData({
               'airDetail.aqi': res.data.now.aqi,
               'airDetail.category': res.data.now.category,

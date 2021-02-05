@@ -255,3 +255,30 @@
     }
   },  // echart图表实例
   ```
+  * 关于echarts在小程序上出现模糊的情况
+   * 调用小程序官方api获取设备信息，将屏幕像素比保存
+   ```js
+   // 在组件实例进入页面节点树时执行
+   wx.getSystemInfo({
+     success: (res) => {
+       pixelRatio = res.pixelRatio  // 获取当前屏幕像素比
+       this.setData({
+        'globalData.statusBarHeight': res.statusBarHeight,
+        'globalData.navBarHeight': 44 + res.statusBarHeight
+      })
+     }
+   })
+   ```
+   * 并在初始化eachart对象的时候设置像素比
+   ```js
+   onInit: function (canvas, width, height){
+      //初始化echarts元素，绑定到全局变量，方便更改数据
+      chartLine = echarts.init(canvas, null, {
+          width: width,
+          height: height,
+          devicePixelRatio: pixelRatio  // 设置像素比
+      });
+      canvas.setChart(chartLine);
+      chartLine.setOption(getOption());
+   }
+   ```
