@@ -1,6 +1,6 @@
 <view class="tempDetail">
   <navbar showBack="{{showBack}}" CityTitle="{{cityName}}"></navbar>
-  <view class="tempDetailCon">
+  <view wx:if="{{showPage}}" class="tempDetailCon">
     <view class="tempTopBox">
       预报时间：{{dayDetail.fxDate}}
     </view>

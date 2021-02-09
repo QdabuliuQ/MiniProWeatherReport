@@ -11,6 +11,7 @@ Page({
     cityName: '',  // 城市名称
     dayDetail: null,  // 当天数据
     blurPX: 5,
+    showPage: false,  // 默认不显示页面
   },
 
   /**
@@ -55,8 +56,7 @@ Page({
             location: res.longitude + ',' + res.latitude,
             key: 'e8fb6c5da8904432803fa50288df8e83'
           }
-        }).then(res => {
-          
+        }).then(res => { 
           that.setData({
             cityName: res.data.location[0].name
           })
@@ -71,6 +71,10 @@ Page({
         }).then(res => {
           that.setData({
             dayDetail: res.data.daily[that.data.index]
+          }, () => {
+            that.setData({
+              showPage: true
+            })
           })
         })
       }
