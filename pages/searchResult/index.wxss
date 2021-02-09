@@ -50,7 +50,7 @@
   font-weight: 200;
   color: #Fff;
   box-sizing: border-box;
-  border-right: 1px solid rgb(241, 241, 241);
+  border-right: 1px solid rgba(241, 241, 241, 0.534);
 }
 .rightDetail{
   flex: 4;

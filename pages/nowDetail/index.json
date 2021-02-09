@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "navbar": "../../components/NavBar/NavBar"
+    "navbar": "../../components/NavBar/NavBar",
+    "echarts": "../../components/ECharts/ECharts"
   }
 }

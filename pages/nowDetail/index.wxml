@@ -83,64 +83,20 @@
     </view>
     <!-- 景区天气预报 -->
     <view class="Attraction">
-      <view class="title">4A和5A级景点的7天天气预报</view>
-      <view class="attractionView">
-        <view style="margin-top: 30rpx" class="attractionItem" wx:for="{{AttractionsDetail}}" wx:key="key">
-          <view style="border-bottom: 1px dashed #d4d4d4b0; padding-bottom: 8rpx" class="attractionTime">预报时间：{{item.fxDate}}</view>
-          <scroll-view
-          enhanced="true"
-          show-scrollbar="false" 
-          scroll-x="true">
-            <view class="attractionScrollView">
-              <view style="margin-top:10rpx" class="scrollItem">
-                <view class="scrollItemTitle">气温</view>
-                <view class="scrollItemText">{{item.tempMin}}°~{{item.tempMax}}°</view>
-              </view>
-              <view style="margin-top:10rpx" class="scrollItem">
-                <view class="scrollItemTitle">天气状况</view>
-                <view class="scrollItemText">{{item.textDay}}</view>
-              </view>
-              <view style="margin-top:10rpx" class="scrollItem">
-                <view class="scrollItemTitle">日出时间</view>
-                <view class="scrollItemText">{{item.sunrise}}</view>
-              </view>
-              <view style="margin-top:10rpx" class="scrollItem">
-                <view class="scrollItemTitle">日落时间</view>
-                <view class="scrollItemText">{{item.sunset}}</view>
-              </view>
-              <view style="margin-top:10rpx" class="scrollItem">
-                <view class="scrollItemTitle">月出时间</view>
-                <view class="scrollItemText">{{item.moonrise}}</view>
-              </view>
-              <view style="margin-top:10rpx" class="scrollItem">
-                <view class="scrollItemTitle">月落时间</view>
-                <view class="scrollItemText">{{item.moonset}}</view>
-              </view>
-              <view style="margin-top:10rpx" class="scrollItem">
-                <view class="scrollItemTitle">月相名称</view>
-                <view class="scrollItemText">{{item.moonPhase}}</view>
-              </view>
-              <view style="margin-top:10rpx" class="scrollItem">
-                <view class="scrollItemTitle">风向风力</view>
-                <view class="scrollItemText">{{item.windDirDay}}{{item.windScaleDay}}级</view>
-              </view>
-              <view style="margin-top:10rpx" class="scrollItem">
-                <view class="scrollItemTitle">降水量</view>
-                <view class="scrollItemText">{{item.precip}}毫米</view>
-              </view>
-              <view style="margin-top:10rpx" class="scrollItem">
-                <view class="scrollItemTitle">大气压强</view>
-                <view class="scrollItemText">{{item.pressure}}百帕</view>
-              </view>
-              <view style="margin-top:10rpx" class="scrollItem">
-                <view class="scrollItemTitle">相对湿度</view>
-                <view class="scrollItemText">{{item.humidity}}%</view>
-              </view>
-              <view style="clear: both"></view>
-            </view>
-          </scroll-view>
-        </view>
-      </view>
+      <view class="borderTitle">中国4A和5A级景点7天天气预报</view>
+      <echarts 
+      ChartName="{{'tempertureChart'}}"
+      class="echartsView" 
+      locationID="{{locationID}}"
+      height="{{'360rpx'}}"></echarts>
+    </view>
+    <!-- 景区天气预报 -->
+    <view class="Attraction">
+      <echarts 
+      ChartName="{{'cipChart'}}"
+      class="echartsView" 
+      locationID="{{locationID}}"
+      height="{{'420rpx'}}"></echarts>
     </view>
   </view>
   <view class="container_bgcImg">

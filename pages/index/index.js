@@ -10,8 +10,8 @@ let pixelRatio = 0;  // 屏幕像素比
 function getOption(num) {
   let option = {
     series: [{
-      radius: '120%' ,  // 设置图表大小
-      center: ['50%', '86%'] ,  // 设置图表位置
+      radius: '110%' ,  // 设置图表大小
+      center: ['50%', '88%'] ,  // 设置图表位置
       type: 'gauge',  // 图表类型
       startAngle: 180,  // 图表起始度数
       endAngle: 0,  // 结束度数
@@ -21,7 +21,8 @@ function getOption(num) {
       axisLine: {  // 表盘轴线配置
         roundCap: true,
         lineStyle: {
-          width: 15,  // 大小
+          roundCap: true ,
+          width: 16,  // 大小
           color: [  // 颜色
             [0.1, '#93e25a'],
             [0.2, '#77f1a8'],
@@ -32,13 +33,10 @@ function getOption(num) {
           ]
         }
       },
-      progress: {
-        roundCap: true ,
-      },
       pointer: {  // 指针样式设置
         icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
         length: '70%',
-        width: 5,
+        width: 3,
         offsetCenter: [0, '-3%'],
         itemStyle: {
           color: 'auto'
@@ -94,7 +92,6 @@ function getOption(num) {
 }
 let that;
 Page({
-  
   data: {
     latitude:'',  // 纬度
     longitude:'',  // 经度
@@ -132,6 +129,7 @@ Page({
   
   
   onLoad(){
+
     // 在组件实例进入页面节点树时执行
     wx.getSystemInfo({
       success: (res) => {

@@ -11,6 +11,10 @@ page{
 ::-webkit-scrollbar {
   display: none;
 }
+image{
+  width: 55rpx;
+  height: 55rpx;
+}
 .icon-taiyang{
   color: #ecc42f !important;
 }

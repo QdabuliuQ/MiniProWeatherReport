@@ -149,3 +149,15 @@
   font-size: 28rpx;
   font-weight: 550;
 }
+.echartsView{
+  width: 100%;
+  height: 300rpx;
+}
+.borderTitle{
+  font-weight: 600;
+  color: #Fff;
+  padding-bottom: 10rpx;
+  border-bottom: 1px solid var(--bColor);
+  margin-bottom: 20rpx;
+  /* background-color: #5cff95; */
+}
