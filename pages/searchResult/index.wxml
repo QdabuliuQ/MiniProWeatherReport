@@ -7,7 +7,7 @@
         <view class="leftDetail">{{tempertureDetail.temp}}°</view>
         <view class="rightDetail">
           <view class="rightBox">
-            <image style="width: 40rpx; height: 40rpx" src="{{'cloud://clouddisk-1g6nr788ca92c10a.636c-clouddisk-1g6nr788ca92c10a-1304975629/color-64/' + tempertureDetail.icon + '.png'}}"></image>
+            <image wx:if='{{customerLevel.value}}' class='iconLevel' style="width: 40rpx; height: 40rpx" src="{{'cloud://clouddisk-1g6nr788ca92c10a.636c-clouddisk-1g6nr788ca92c10a-1304975629/64/' + tempertureDetail.icon + '.png'}}"></image>
             <view style="margin-bottom: 4rpx; color: #fff" class="">{{tempertureDetail.text}}</view>
             <view style="color: #fff">{{tempertureDetail.windDir}}</view>
           </view>
@@ -32,7 +32,7 @@
                 <view class="time">{{m3.getDay(item.fxTime)}}</view>
                 <view class="weatherIcon">
                   <image 
-                    src="{{item.time >= 18 || item.time < 6 ? 'cloud://clouddisk-1g6nr788ca92c10a.636c-clouddisk-1g6nr788ca92c10a-1304975629/color-64/150.png' : 'cloud://clouddisk-1g6nr788ca92c10a.636c-clouddisk-1g6nr788ca92c10a-1304975629/color-64/100.png'}}"></image>
+                  src="{{item.time >= 18 || item.time < 6 ? 'cloud://clouddisk-1g6nr788ca92c10a.636c-clouddisk-1g6nr788ca92c10a-1304975629/64/150.png' : 'cloud://clouddisk-1g6nr788ca92c10a.636c-clouddisk-1g6nr788ca92c10a-1304975629/64/100.png'}}"></image>
                 </view>
                 <view class="tempItem">{{item.temp}}°</view>
               </view>
@@ -47,7 +47,7 @@
         <view class="tempFutureItem">
           <view class="leftDay">{{item.DayOfWeek}}</view>
           <view class="centerIcon">
-            <image src="{{'cloud://clouddisk-1g6nr788ca92c10a.636c-clouddisk-1g6nr788ca92c10a-1304975629/color-64/' + item.iconDay + '.png'}}"></image>
+            <image src="{{'cloud://clouddisk-1g6nr788ca92c10a.636c-clouddisk-1g6nr788ca92c10a-1304975629/64/' + item.iconDay + '.png'}}"></image>
           </view>
           <view class="tempMax">{{item.tempMax}}°</view>
           <view class="tempMin">{{item.tempMin}}°</view>
@@ -59,7 +59,7 @@
       <view class="tempDetailTop">详情数据</view>
       <view class="tempDetailView">
         <view class="tempDetailLeft">
-          <image style="width: 256rpx; height: 256rpx" src="{{'cloud://clouddisk-1g6nr788ca92c10a.636c-clouddisk-1g6nr788ca92c10a-1304975629/color-128/' + tempertureDetail.icon + '.png'}}"></image>
+          <image wx:if='{{customerLevel.value}}' class='iconLevel' style="width: 256rpx; height: 256rpx" src="{{'cloud://clouddisk-1g6nr788ca92c10a.636c-clouddisk-1g6nr788ca92c10a-1304975629/128/' + tempertureDetail.icon + '.png'}}"></image>
         </view>
         <view class="temDetailRight">
           <view class="temDetailItem">

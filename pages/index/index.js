@@ -1,96 +1,6 @@
 //index.js
 //获取应用实例
 import {request, requestDetail} from "../../request/request"
-import * as echarts from '../../ec-canvas/echarts';  // 引入echart
-const app = getApp()
-let chartLine;  // 图表实例
-let airScore = 0;  // 空气成绩
-let pixelRatio = 0;  // 屏幕像素比
-// 设置图表数据
-function getOption(num) {
-  let option = {
-    series: [{
-      radius: '110%' ,  // 设置图表大小
-      center: ['50%', '88%'] ,  // 设置图表位置
-      type: 'gauge',  // 图表类型
-      startAngle: 180,  // 图表起始度数
-      endAngle: 0,  // 结束度数
-      min: 0,  // 最小值
-      max: 1,  // 最大值
-      splitNumber: 20,  // 一共分为20份
-      axisLine: {  // 表盘轴线配置
-        roundCap: true,
-        lineStyle: {
-          roundCap: true ,
-          width: 16,  // 大小
-          color: [  // 颜色
-            [0.1, '#93e25a'],
-            [0.2, '#77f1a8'],
-            [0.3, '#fad35d'],
-            [0.4, '#f2ad2d'],
-            [0.6, '#df8742'],
-            [1, '#dd6e46']
-          ]
-        }
-      },
-      pointer: {  // 指针样式设置
-        icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
-        length: '70%',
-        width: 3,
-        offsetCenter: [0, '-3%'],
-        itemStyle: {
-          color: 'auto'
-        }
-      },
-      axisTick: {  // 小刻度线配置 
-        show: true,
-        length: 7,
-        lineStyle: {
-          color: 'auto',
-          width: 1
-        }
-      },
-      splitLine: {
-        length: 8,
-        lineStyle: {
-          color: 'auto',
-          width: 2
-        }
-      },
-      axisLabel: {
-        color: 'auto',
-        fontSize: 10,
-        distance: -35,
-        formatter: function (value) {
-          if (value === 0.05) {
-              return '优';
-          }
-          else if (value === 0.15) {
-              return '良';
-          }
-          else if (value === 0.25) {
-              return '轻度';
-          }
-          else if (value === 0.35) {
-              return '中度';
-          }
-          else if (value === 0.5) {
-              return '重度';
-          }
-          else if (value === 0.8) {
-              return '严重';
-          }
-        }
-      },
-      data: [{
-        value: (1 / 500) * airScore ,
-        name: ' '
-      }]
-    }]
-  };
-  return option
-}
-let that;
 Page({
   data: {
     latitude:'',  // 纬度
@@ -111,29 +21,17 @@ Page({
       aqi: '',
       category: ''
     }, // 空气质量
-    ec: {
-      onInit: function (canvas, width, height){
-        //初始化echarts元素，绑定到全局变量，方便更改数据
-        chartLine = echarts.init(canvas, null, {
-            width: width,
-            height: height,
-            devicePixelRatio: pixelRatio  // 设置像素比
-        });
-        canvas.setChart(chartLine);
-        chartLine.setOption(getOption());
-      }
-    },  // echart图表实例
     globalData: null,  // 顶部高度
+    toastPosition: 0,  // 提示框位置
+    toastBackgroundColor: '#fff'
   },
   blurPXIndex: 0,
   
   
   onLoad(){
-
     // 在组件实例进入页面节点树时执行
     wx.getSystemInfo({
       success: (res) => {
-        pixelRatio = res.pixelRatio
         this.setData({
           'globalData.statusBarHeight': res.statusBarHeight,
           'globalData.navBarHeight': 44 + res.statusBarHeight
@@ -277,12 +175,11 @@ Page({
               key: wx.getStorageSync('cityDetail').key
             }
           }).then(res => {
+            console.log(res);
             this.setData({
               'airDetail.aqi': res.data.now.aqi,
               'airDetail.category': res.data.now.category,
             })
-            airScore = res.data.now.aqi
-            getOption(res.data.now.aqi)
           })
         })
       }
@@ -305,6 +202,36 @@ Page({
         imgUrl: 'https://img.coolcr.cn/2020/12/31/217930e095d27.jpg'
       })
     }
+  },
+
+  onReady() {
+    let colorList = ['#7bd9c7','#77d28c','#e6c831','#dd9428','#d9651d','#d0361a']  // 颜色数组
+    let activeColor;  // 活跃颜色
+    let that = this
+    const query = wx.createSelectorQuery() // 创建节点查询器 query
+    setTimeout(() => {  // 延时调用 防止获取不到dom元素
+      query.select('.airLine').boundingClientRect(function(res) {
+        let toastPosition = res.width / 500 * that.data.airDetail.aqi  // 计算位置
+        if (toastPosition > 0 && toastPosition <= res.width * 0.1) {
+          activeColor = colorList[0]
+        } else if (toastPosition > res.width * 0.1 && toastPosition <= res.width * 0.2 ){
+          activeColor = colorList[1]
+        } else if (toastPosition > res.width * 0.2 && toastPosition <= res.width * 0.3 ){
+          activeColor = colorList[2]
+        } else if (toastPosition > res.width * 0.3 && toastPosition <= res.width * 0.4 ){
+          activeColor = colorList[3]
+        } else if (toastPosition > res.width * 0.4 && toastPosition <= res.width * 0.6 ){
+          activeColor = colorList[4]
+        } else if (toastPosition > res.width * 0.6){
+          activeColor = colorList[5]
+        }
+        that.setData({
+          toastPosition,
+          toastBackgroundColor: activeColor
+        })
+      });
+      query.exec(function (res) {})
+    }, 1500);
   },
 
   // 获取星期

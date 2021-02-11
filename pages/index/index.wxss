@@ -175,6 +175,8 @@
 }
 .centerIcon{
   flex: 2;
+  display: flex;
+  align-items: center;
 }
 .tempFutureItemIcon{
   font-size: 37rpx !important;
@@ -295,5 +297,115 @@
 }
 .chartContainer{
   width: 100%;
-  height: 300rpx;
+  height: 250rpx;
+}
+.airLine{
+  width: 100%;
+  height: 15rpx;
+  border-radius: 15rpx;
+  margin: 20rpx auto 0;
+  background-color: #fff;
+  position: relative;
+}
+.lineContainer{
+  display: flex;
+  width: 95%;
+  position: relative;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.leftContainer{
+  flex: 0.8;
+  height: 30rpx;
+  text-align: center;
+  font-size: 20rpx;
+  color: #fff;
+  position: relative;
+  top: 15rpx;
+}
+.colorContainer{
+  flex: 8.4;
+}
+.rightContainer{
+  flex: 0.8;
+  height: 30rpx;
+  text-align: center;
+  font-size: 20rpx;
+  color: #fff;
+  position: relative;
+  top: 15rpx;
+}
+.toast{
+  position: absolute;
+  top: -500%;
+  transform: translate(-50%);
+}
+.toastBox{
+  padding: 8rpx 20rpx;
+  color: #fff;
+  font-size: 24rpx;
+  border-radius: 10rpx;
+}
+.jianT{
+  position: absolute;
+  bottom: -31%;
+  left: 50%;
+  transform: translate(-50%);
+  content: '';
+  border-top:16rpx solid #a60;
+  border-bottom:0px solid #a60;
+  border-left:16rpx solid transparent;
+  border-right:16rpx solid transparent;
+}
+.airLineItem{
+  float: left;
+}
+.item1{
+  width: 10%;
+  height: 100%;
+}
+.item2{
+  width: 20%;
+  height: 100%;
+}
+.item3{
+  width: 40%;
+  height: 100%;
+}
+.rank1{
+  background-color: #7bd9c7;
+  border-top-left-radius: 15rpx;
+  border-bottom-left-radius: 15rpx;
+}
+.rank2{
+  background-color: #77d28c;
+}
+.rank3{
+  background-color: #e6c831;
+}
+.rank4{
+  background-color: #dd9428;
+}
+.rank5{
+  background-color: #d9651d;
+}
+.rank6{
+  background-color: #d0361a;
+  border-top-right-radius: 15rpx;
+  border-bottom-right-radius: 15rpx;
+}
+.airLineText{
+  width: 100%;
+  height: 30rpx;
+  position: relative;
+  top: 10rpx;
+}
+.airLineItemText{
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20rpx;
+  color: #fff;
 }

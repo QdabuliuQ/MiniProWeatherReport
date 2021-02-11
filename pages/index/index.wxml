@@ -17,7 +17,9 @@
         <view class="leftDetail">{{tempertureDetail.temp}}°</view>
         <view class="rightDetail">
           <view class="rightBox">
-            <image style="width: 40rpx; height: 40rpx" src="{{'cloud://clouddisk-1g6nr788ca92c10a.636c-clouddisk-1g6nr788ca92c10a-1304975629/color-64/' + tempertureDetail.icon + '.png'}}"></image>
+            <image style="width: 40rpx; height: 40rpx"
+              src="{{'cloud://clouddisk-1g6nr788ca92c10a.636c-clouddisk-1g6nr788ca92c10a-1304975629/64/' + tempertureDetail.icon + '.png'}}">
+            </image>
             <view style="margin-bottom: 4rpx; color: #fff" class="">{{tempertureDetail.text}}</view>
             <view style="color: #fff">{{tempertureDetail.windDir}}</view>
           </view>
@@ -27,7 +29,8 @@
         <navigator url="/pages/nowDetail/index" hover-class="none" style="float:left">
           查看更多
         </navigator>
-        <view style="float:left; font-size: 20rpx; position: relative; top: 1px; left: 2px" class="iconfont icon-gengduo"></view>
+        <view style="float:left; font-size: 20rpx; position: relative; top: 1px; left: 2px"
+          class="iconfont icon-gengduo"></view>
       </view>
       <navigator hover-class="none" url="/pages/mapView/index" class="map">
         <image src="../../icon/map.png"></image>
@@ -41,18 +44,15 @@
         <view class="date">{{date}}</view>
       </view>
       <view class="tempHourList">
-        <scroll-view 
-        class="scrollView"
-        enhanced="true"
-        show-scrollbar="false" 
-        scroll-x="true">
+        <scroll-view class="scrollView" enhanced="true" show-scrollbar="false" scroll-x="true">
           <view class="scrollHourBox">
             <view class="tempHourItem" wx:for="{{hourList}}" wx:key="key">
               <view class="itemBox">
                 <view class="time">{{m1.getDay(item.fxTime)}}</view>
                 <view class="weatherIcon">
-                  <image 
-                    src="{{item.time >= 18 || item.time < 6 ? 'cloud://clouddisk-1g6nr788ca92c10a.636c-clouddisk-1g6nr788ca92c10a-1304975629/color-64/150.png' : 'cloud://clouddisk-1g6nr788ca92c10a.636c-clouddisk-1g6nr788ca92c10a-1304975629/color-64/100.png'}}"></image>
+                  <image
+                    src="{{item.time >= 18 || item.time < 6 ? 'cloud://clouddisk-1g6nr788ca92c10a.636c-clouddisk-1g6nr788ca92c10a-1304975629/64/150.png' : 'cloud://clouddisk-1g6nr788ca92c10a.636c-clouddisk-1g6nr788ca92c10a-1304975629/64/100.png'}}">
+                  </image>
                 </view>
                 <view class="tempItem">{{item.temp}}°</view>
               </view>
@@ -67,7 +67,9 @@
         <navigator class="tempFutureItem" url="/pages/tempDetail/index?index={{index}}">
           <view class="leftDay">{{item.DayOfWeek}}</view>
           <view class="centerIcon">
-            <image src="{{'cloud://clouddisk-1g6nr788ca92c10a.636c-clouddisk-1g6nr788ca92c10a-1304975629/color-64/' + item.iconDay + '.png'}}"></image>
+            <image
+              src="{{'cloud://clouddisk-1g6nr788ca92c10a.636c-clouddisk-1g6nr788ca92c10a-1304975629/64/' + item.iconDay + '.png'}}">
+            </image>
           </view>
           <view class="tempMax">{{item.tempMax}}°</view>
           <view class="tempMin">{{item.tempMin}}°</view>
@@ -79,7 +81,9 @@
       <view class="tempDetailTop">详情数据</view>
       <view class="tempDetailView">
         <view class="tempDetailLeft">
-          <image style="width: 256rpx; height: 256rpx" src="{{'cloud://clouddisk-1g6nr788ca92c10a.636c-clouddisk-1g6nr788ca92c10a-1304975629/color-128/' + tempertureDetail.icon + '.png'}}"></image>
+          <image style="width: 256rpx; height: 256rpx"
+            src="{{'cloud://clouddisk-1g6nr788ca92c10a.636c-clouddisk-1g6nr788ca92c10a-1304975629/128/' + tempertureDetail.icon + '.png'}}">
+          </image>
         </view>
         <view class="temDetailRight">
           <view class="temDetailItem">
@@ -148,10 +152,39 @@
     </view>
     <view class="liftIndexTop">
       空气指数
-      <view class="score">{{airDetail.aqi}}  ·  {{airDetail.category}}</view>
+      <view class="score">{{airDetail.aqi}} · {{airDetail.category}}</view>
     </view>
     <view class="chartContainer">
-      <ec-canvas ec='{{ec}}'></ec-canvas>
+      <view class="lineContainer">
+        <view class="leftContainer">0</view>
+        <view class="colorContainer">
+          <!-- 颜色条 -->
+          <view class="airLine">
+            <view class="toast" style="left: {{toastPosition}}px">
+              <view class="toastBox" style="background-color: {{toastBackgroundColor}}">
+                {{airDetail.aqi}}
+              </view>
+              <view class="jianT" style="border-top-color:{{toastBackgroundColor}}"></view>
+            </view>
+            <view class="airLineItem item1 rank1"></view>
+            <view class="airLineItem item1 rank2"></view>
+            <view class="airLineItem item1 rank3"></view>
+            <view class="airLineItem item1 rank4"></view>
+            <view class="airLineItem item2 rank5"></view>
+            <view class="airLineItem item3 rank6"></view>
+          </view>
+          <!-- 提示文字 -->
+          <view class="airLineText">
+            <view class="airLineItemText item1">优</view>
+            <view class="airLineItemText item1">良</view>
+            <view class="airLineItemText item1">轻度</view>
+            <view class="airLineItemText item1">中度</view>
+            <view class="airLineItemText item2">重度</view>
+            <view class="airLineItemText item3">严重</view>
+          </view>
+        </view>
+        <view class="rightContainer">500</view>
+      </view>
     </view>
   </view>
   <view class="container_bgcImg">
@@ -160,13 +193,13 @@
 </view>
 
 <wxs module="m1">
-// 封装方法  获取日期
-var getDay = function(day) {
-  var reg = getRegExp('T', 'g')  // 获取T字符
-  var reg2 = getRegExp('\+', 'g')  // 获取+字符
-  var index = day.search(reg) + 1  // 获取索引
-  var index2 = day.search(reg2)  // 获取索引
-  return day.substring(index, index2)
-}
-module.exports.getDay = getDay;
+  // 封装方法 获取日期
+  var getDay = function (day) {
+    var reg = getRegExp('T', 'g') // 获取T字符
+    var reg2 = getRegExp('\+', 'g') // 获取+字符
+    var index = day.search(reg) + 1 // 获取索引
+    var index2 = day.search(reg2) // 获取索引
+    return day.substring(index, index2)
+  }
+  module.exports.getDay = getDay;
 </wxs>
