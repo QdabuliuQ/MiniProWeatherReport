@@ -1,7 +1,6 @@
 import {request, requestDetail} from "../../request/request"
 
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -124,6 +123,7 @@ Page({
           this.latitudeEnd = res.latitude  // 保存滑动后的位置
           this.longitudeEnd = res.longitude
           if ((this.latitudeEnd != this.latitudeStart) || (this.longitudeEnd != this.longitudeStart)) {
+            console.log(this.latitudeStart,this.longitudeStart +'--'+ this.latitudeEnd, this.longitudeEnd);
             // 防抖功能 避免多次没有必要的请求
             this.intervalTimer = setTimeout(() => {
               that.getCityTempDetail(that.longitudeEnd, that.latitudeEnd)

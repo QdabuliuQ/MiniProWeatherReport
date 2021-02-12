@@ -340,6 +340,7 @@
   position: absolute;
   top: -500%;
   transform: translate(-50%);
+  transition: 0.3s all linear;
 }
 .toastBox{
   padding: 8rpx 20rpx;

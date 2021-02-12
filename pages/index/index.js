@@ -155,8 +155,32 @@ Page({
               dailyArr: res.data.daily,
               showContainer: true
             }, () => {
-              let scrollHeight = 0;
-              let that = this;
+              let scrollHeight = 0;  // 默认滚动高度
+              let colorList = ['#7bd9c7','#77d28c','#e6c831','#dd9428','#d9651d','#d0361a']  // 颜色数组
+              let activeColor;  // 活跃颜色
+              let that = this
+              const query = wx.createSelectorQuery() // 创建节点查询器 query
+              query.select('.airLine').boundingClientRect(function(res) {
+                let toastPosition = res.width / 500 * that.data.airDetail.aqi  // 计算位置
+                if (toastPosition > 0 && toastPosition <= res.width * 0.1) {
+                  activeColor = colorList[0]
+                } else if (toastPosition > res.width * 0.1 && toastPosition <= res.width * 0.2 ){
+                  activeColor = colorList[1]
+                } else if (toastPosition > res.width * 0.2 && toastPosition <= res.width * 0.3 ){
+                  activeColor = colorList[2]
+                } else if (toastPosition > res.width * 0.3 && toastPosition <= res.width * 0.4 ){
+                  activeColor = colorList[3]
+                } else if (toastPosition > res.width * 0.4 && toastPosition <= res.width * 0.6 ){
+                  activeColor = colorList[4]
+                } else if (toastPosition > res.width * 0.6){
+                  activeColor = colorList[5]
+                }
+                that.setData({
+                  toastPosition,
+                  toastBackgroundColor: activeColor
+                })
+              });
+              query.exec(function (res) {})
               wx.createSelectorQuery().select('.tempDetail').boundingClientRect(function(rect){
                 scrollHeight = rect.top
               }).exec(function(){  // exec是回调函数
@@ -166,16 +190,14 @@ Page({
               })
             })
           })
-
           // 空气质量
           requestDetail({
             url: '/v7/air/now?',
             data: {
-              location: wx.getStorageSync('cityDetail').location,
-              key: wx.getStorageSync('cityDetail').key
+              location: loc,
+              key: 'e8fb6c5da8904432803fa50288df8e83'
             }
           }).then(res => {
-            console.log(res);
             this.setData({
               'airDetail.aqi': res.data.now.aqi,
               'airDetail.category': res.data.now.category,
@@ -205,33 +227,7 @@ Page({
   },
 
   onReady() {
-    let colorList = ['#7bd9c7','#77d28c','#e6c831','#dd9428','#d9651d','#d0361a']  // 颜色数组
-    let activeColor;  // 活跃颜色
-    let that = this
-    const query = wx.createSelectorQuery() // 创建节点查询器 query
-    setTimeout(() => {  // 延时调用 防止获取不到dom元素
-      query.select('.airLine').boundingClientRect(function(res) {
-        let toastPosition = res.width / 500 * that.data.airDetail.aqi  // 计算位置
-        if (toastPosition > 0 && toastPosition <= res.width * 0.1) {
-          activeColor = colorList[0]
-        } else if (toastPosition > res.width * 0.1 && toastPosition <= res.width * 0.2 ){
-          activeColor = colorList[1]
-        } else if (toastPosition > res.width * 0.2 && toastPosition <= res.width * 0.3 ){
-          activeColor = colorList[2]
-        } else if (toastPosition > res.width * 0.3 && toastPosition <= res.width * 0.4 ){
-          activeColor = colorList[3]
-        } else if (toastPosition > res.width * 0.4 && toastPosition <= res.width * 0.6 ){
-          activeColor = colorList[4]
-        } else if (toastPosition > res.width * 0.6){
-          activeColor = colorList[5]
-        }
-        that.setData({
-          toastPosition,
-          toastBackgroundColor: activeColor
-        })
-      });
-      query.exec(function (res) {})
-    }, 1500);
+    
   },
 
   // 获取星期

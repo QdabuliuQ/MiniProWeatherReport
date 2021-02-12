@@ -23,15 +23,12 @@ export const request = (params) => {
         if (ajaxtime === 0) {
           wx.hideLoading()  // 隐藏加载动画
         }
-        wx.hideLoading()  // 隐藏加载动画
       }
     })
   })
 }
 
-// let ajaxtime2 = 0;
 export const requestDetail = (params) => {
-  // ajaxtime2 ++;
   ajaxtime++;
   wx.showLoading({
     title: '加载中',

@@ -77,19 +77,6 @@ Page({
       })
     })
 
-    // 景区预报
-    // requestDetail({
-    //   url: '/v7/weather/7d?',
-    //   data: {
-    //     location: cityDetail.location,
-    //     key: cityDetail.key
-    //   }
-    // }).then(res => {
-    //   this.setData({
-    //     AttractionsDetail: res.data.daily
-    //   })
-    // })
-
     // 灾害预警
     requestDetail({
       url: '/v7/warning/now?',
@@ -119,5 +106,4 @@ Page({
       })
     }
   },
-
 })
