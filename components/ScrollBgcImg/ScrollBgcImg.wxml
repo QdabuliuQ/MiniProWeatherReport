@@ -1,0 +1,3 @@
+<view class="container_bgcImg">
+    <image style="filter:blur({{blurPX}}px)" src="{{imgUrl}}"></image>
+</view>

@@ -7,14 +7,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgUrl: '', // 背景图片url
     cityName: '', // 所在城市名称
     hoursDetail: null, // 未来两小时数据
     airDetail: null, // 空气质量
     showMoreDetail: false, // 显示/隐藏更多数据
     btnText: '点击查看更多数据',
     AttractionsDetail: null, // 景点气温
-    blurPX: 5,
     warningDetail: [], // 灾害预警
     locationID: 0,
   },
@@ -89,21 +87,5 @@ Page({
         warningDetail: res.data.warning
       })
     })
-
-    let date = new Date()
-    let nowTime = date.getHours()
-    if (nowTime >= 6 && nowTime < 15) {
-      this.setData({
-        imgUrl: 'https://img.coolcr.cn/2020/12/31/343b42a5b30c5.jpg'
-      })
-    } else if (nowTime >= 15 && nowTime < 18) {
-      this.setData({
-        imgUrl: 'https://img.coolcr.cn/2021/01/02/c33a7248a5f66.jpg'
-      })
-    } else {
-      this.setData({
-        imgUrl: 'https://img.coolcr.cn/2020/12/31/217930e095d27.jpg'
-      })
-    }
   },
 })

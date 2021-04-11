@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "navbar": "../../components/NavBar/NavBar",
-    "echarts": "../../components/ECharts/ECharts"
+    "echarts": "../../components/ECharts/ECharts",
+    "scroll-Bgc-Img": "../../components/ScrollBgcImg/ScrollBgcImg"
   }
 }

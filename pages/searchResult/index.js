@@ -5,8 +5,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgUrl: '',
-    blurPX: 5,
     cityDetail: null,  // 城市信息
     tempertureDetail: null,  // 城市天气基本数据
     date: '',  // 当天星期几
@@ -97,7 +95,8 @@ Page({
       }
     }).then(res => {
       this.setData({
-        tempertureDetail: res.data.now
+        tempertureDetail: res.data.now,
+        showIcon: true,
       })
     })
 
@@ -201,21 +200,5 @@ Page({
         AttractionsDetail: res.data.daily
       })
     })
-
-    let date = new Date()
-    let nowTime = date.getHours()
-    if (nowTime >= 6 && nowTime < 15) {
-      this.setData({  
-        imgUrl: 'https://img.coolcr.cn/2020/12/31/343b42a5b30c5.jpg'
-      })
-    } else if (nowTime >= 15 && nowTime < 18) {
-      this.setData({
-        imgUrl: 'https://img.coolcr.cn/2021/01/02/c33a7248a5f66.jpg'
-      })
-    } else {
-      this.setData({
-        imgUrl: 'https://img.coolcr.cn/2020/12/31/217930e095d27.jpg'
-      })
-    }
   },
 })

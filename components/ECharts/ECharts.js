@@ -200,7 +200,7 @@ Component({
                 color: ['#5cff95', '#76c1ffd0'],  // 颜色
                 grid: {  // 图表大小
                   top: '28%',
-                  left: '0%',
+                  left: '2%',
                   right: '0%',
                   bottom: '0%',
                   containLabel: true
@@ -259,9 +259,9 @@ Component({
                         color: 'rgba(255,255,255,0.2)'
                       }
                     },
-                    min: 500,
-                    max: 1500,
-                    interval: 200,
+                    min: 1000,  // 图表左侧最小值
+                    max: 1050,  // 图表右侧最大值
+                    interval: 10,  // 增值
                   },
                   {
                     type: 'value',
@@ -331,9 +331,6 @@ Component({
           }  
         })
       }
-    },
-    "firstChart": function () {
-      console.log(this.properties.ChartName);
     }
   }
 })

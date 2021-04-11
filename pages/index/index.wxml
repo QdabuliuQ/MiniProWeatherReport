@@ -187,9 +187,7 @@
       </view>
     </view>
   </view>
-  <view class="container_bgcImg">
-    <image style="filter:blur({{blurPX}}px)" src="{{imgUrl}}"></image>
-  </view>
+  <scroll-Bgc-Img scrollVague="{{true}}" blurPX="{{blurPX}}"></scroll-Bgc-Img>
 </view>
 
 <wxs module="m1">

@@ -23,7 +23,8 @@ Page({
     }, // 空气质量
     globalData: null,  // 顶部高度
     toastPosition: 0,  // 提示框位置
-    toastBackgroundColor: '#fff'
+    toastBackgroundColor: '#fff',
+    blurPX: 0
   },
   blurPXIndex: 0,
   
@@ -209,21 +210,6 @@ Page({
   },
 
   onShow(){
-    let date = new Date()
-    let nowTime = date.getHours()
-    if (nowTime >= 6 && nowTime < 15) {
-      this.setData({  
-        imgUrl: 'https://img.coolcr.cn/2020/12/31/343b42a5b30c5.jpg'
-      })
-    } else if (nowTime >= 15 && nowTime < 18) {
-      this.setData({
-        imgUrl: 'https://img.coolcr.cn/2021/01/02/c33a7248a5f66.jpg'
-      })
-    } else {
-      this.setData({
-        imgUrl: 'https://img.coolcr.cn/2020/12/31/217930e095d27.jpg'
-      })
-    }
   },
 
   onReady() {
