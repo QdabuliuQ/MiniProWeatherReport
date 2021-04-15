@@ -209,21 +209,24 @@ Page({
     })
   },
 
-  onShow(){
+  // 节流函数
+  // fn 执行函数
+  // delay 间隔时间
+  throttle(delay, e) {
+    let valid = true  // 当前函数是否可执行
+    if (!valid) {  // 函数不可执行
+      return false
+    }
+    valid = false  // 执行函数 修改判断条件为false
+    setTimeout(() => {
+      this.listenScroll(e)
+      valid = true  // 函数执行完成后 修改判断条件为ture
+    }, delay)
   },
 
-  onReady() {
+
+  listenScroll(e) {
     
-  },
-
-  // 获取星期
-  getDayOfWeek(dayTime){
-    let day = new Date(Date.parse(dayTime.replace(/-/g, '/'))); //将日期值格式化
-    let today = new Array("星期天","星期一","星期二","星期三","星期四","星期五","星期六");
-    return today[day.getDay()]; //day.getDay();根据Date返一个星期中的某其中0为星期日
-  },
-
-  onPageScroll:function(e){ // 获取滚动条当前位置
     if (e.scrollTop > this.data.scrollTop) {
       let index = this.data.scrollHeight / 5
       if (this.blurPXIndex <= 5) { 
@@ -244,5 +247,25 @@ Page({
     this.setData({
       scrollTop: e.scrollTop
     })
+  },
+
+  onShow(){
+  },
+
+  onReady() {
+    
+  },
+
+  // 获取星期
+  getDayOfWeek(dayTime){
+    let day = new Date(Date.parse(dayTime.replace(/-/g, '/'))); //将日期值格式化
+    let today = new Array("星期天","星期一","星期二","星期三","星期四","星期五","星期六");
+    return today[day.getDay()]; //day.getDay();根据Date返一个星期中的某其中0为星期日
+  },
+  
+  that: this,
+  onPageScroll(e){ // 获取滚动条当前位置
+    
+    this.throttle(250, e)
   }
 })

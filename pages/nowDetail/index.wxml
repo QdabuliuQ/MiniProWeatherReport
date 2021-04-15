@@ -84,19 +84,15 @@
     <!-- 景区天气预报 -->
     <view class="Attraction">
       <view class="borderTitle">中国4A和5A级景点7天天气预报</view>
-      <echarts 
-      ChartName="{{'tempertureChart'}}"
-      class="echartsView" 
-      locationID="{{locationID}}"
-      height="{{'360rpx'}}"></echarts>
+      <view class="echart_box">
+        <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar"  ec="{{ ecBar }}"></ec-canvas>
+      </view>
     </view>
     <!-- 景区天气预报 -->
     <view class="Attraction">
-      <echarts 
-      ChartName="{{'cipChart'}}"
-      class="echartsView" 
-      locationID="{{locationID}}"
-      height="{{'420rpx'}}"></echarts>
+      <view class="echart_box">
+        <ec-canvas id="mychart-dom-bar2" canvas-id="mychart-bar2"  ec="{{ ecBar2 }}"></ec-canvas>
+      </view>
     </view>
   </view>
   <scroll-Bgc-Img></scroll-Bgc-Img>

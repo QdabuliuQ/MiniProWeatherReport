@@ -37,6 +37,13 @@ Component({
 
     },
     pixelRatio: 0,  // 像素比
+    ecBar: {
+      lazyLoad: true // 延迟加载
+    },
+
+    ecScatter: {
+      lazyLoad: true 
+    }
   },
 
   lifetimes: {
@@ -44,7 +51,7 @@ Component({
     attached: function () {
       wx.getSystemInfo({
         success: (res) => {
-          this.setData({
+          this.setData({  // 获取当前屏幕像素比
             pixelRatio: res.pixelRatio
           })
         }
@@ -178,6 +185,7 @@ Component({
                   });
                   canvas.setChart(chartLine);
                   chartLine.setOption(that.data.option);
+                  return chartLine
                 }
               }
             })
@@ -318,12 +326,12 @@ Component({
               ec: {
                 onInit: function (canvas, width, height){
                   //初始化echarts元素，绑定到全局变量，方便更改数据
-                  let chartLine = echarts.init(canvas, null, {
+                  let chartBar = echarts.init(canvas, null, {
                       width: width,
                       height: height,
                       devicePixelRatio: that.data.pixelRatio  // 设置像素比
                   });
-                  canvas.setChart(chartLine);
+                  canvas.setChart(chartBar);
                   chartLine.setOption(that.data.option);
                 }
               }
