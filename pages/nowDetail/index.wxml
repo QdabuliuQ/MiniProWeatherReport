@@ -83,7 +83,7 @@
     </view>
     <!-- 景区天气预报 -->
     <view class="Attraction">
-      <view class="borderTitle">中国4A和5A级景点7天天气预报</view>
+      <view class="borderTitle">附近景点区域7天天气预报</view>
       <view class="echart_box">
         <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar"  ec="{{ ecBar }}"></ec-canvas>
       </view>

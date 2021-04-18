@@ -1,0 +1,65 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "详情页面",
+          "pathName": "pages/tempDetail/index",
+          "query": "index=0",
+          "scene": null
+        },
+        {
+          "name": "更多数据",
+          "pathName": "pages/nowDetail/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "搜索",
+          "pathName": "pages/search/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "搜索结果",
+          "pathName": "pages/searchResult/index",
+          "query": "id=101010100&name=北京&location=116.73201,23.37375",
+          "scene": null
+        },
+        {
+          "name": "地图",
+          "pathName": "pages/mapView/index",
+          "query": "latitude=23.13171&longitude=113.26627",
+          "scene": null
+        },
+        {
+          "name": "疫情",
+          "pathName": "pages/epidemicDetail/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "疫情资讯",
+          "pathName": "pages/epidemicNews/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "疫情辟谣",
+          "pathName": "pages/epidemicRumors/index",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

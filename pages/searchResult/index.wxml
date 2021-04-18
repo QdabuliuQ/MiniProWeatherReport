@@ -210,7 +210,7 @@
     </view>
     <!-- 景区天气预报 -->
     <view class="Attraction">
-      <view class="liftIndexTop">4A和5A级景点的7天天气预报</view>
+      <view class="liftIndexTop">附近景点区域7天天气预报</view>
       <view class="attractionView" style="padding: 0 30rpx">
         <view style="margin-top: 30rpx" class="attractionItem" wx:for="{{AttractionsDetail}}" wx:key="key">
           <view style="border-bottom: 1px dashed #d4d4d4b0; padding-bottom: 8rpx" class="attractionTime">预报时间：{{item.fxDate}}</view>

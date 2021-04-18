@@ -1,0 +1,30 @@
+<view id="epidemicNews">
+  <!-- 顶部导航栏 -->
+  <navbar navColorBlack="{{true}}" fontColor="{{'#000'}}" showBack="{{true}}" class="navbar" CityTitle="{{'疫情资讯'}}">
+  </navbar>
+  <view class="newsContainer">
+    <view wx:for="{{news}}" wx:key="key" class="news_item">
+      <view class="newsTitle">{{item.title}}</view>
+      <view class="newsContent">{{item.summary}}</view>
+      <view class="newsDetail">
+        <view class="detail_item time">发布时间：<text>{{m4.format(item.pubDate)}}</text></view>
+        <view class="detail_item source">来自：<text>{{item.infoSource}}</text></view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<wxs module="m4">
+  // 封装方法 获取日期
+  function format(ts) {
+    var dt = getDate(parseInt(ts))
+    var y = dt.getFullYear(); // 获取年份
+    var m = (dt.getMonth() + 1) > 9 ? (dt.getMonth() + 1) : ('0' +(dt.getMonth() + 1))
+    var d = (dt.getDate()) > 9 ? (dt.getDate()) : ('0' +dt.getDate())
+    var h = (dt.getHours()) > 9 ? (dt.getHours()) : ('0' +dt.getHours())
+    var mi = (dt.getMinutes()) > 9 ? (dt.getMinutes()) : ('0' +dt.getMinutes())
+    var s = (dt.getSeconds()) > 9 ? (dt.getSeconds()) : ('0' +dt.getSeconds())
+    return y+'-'+m+'-'+d + ' ' + h+':'+mi+':'+s
+  }
+  module.exports.format = format
+</wxs>

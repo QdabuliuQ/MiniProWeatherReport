@@ -7,6 +7,8 @@ page,view,text,image,swiper,swiper-item,navigator{
 page{
   /* 定义全局css变量 */
   --bColor: #dfdfdf31;  
+
+  --shacolor: 0 0 10rpx rgba(0, 0, 0, .2);
 }
 ::-webkit-scrollbar {
   display: none;

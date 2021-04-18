@@ -1,0 +1,99 @@
+<view id="epidemicDetail">
+  <navbar navColorBlack="{{true}}" fontColor="{{'#000'}}" showBack="{{showBack}}" class="navbar" CityTitle="{{title}}">
+  </navbar>
+  <view class="detail_container">
+    <!-- 顶部基础数据 -->
+    <view class="dataForm">
+      <view class="dataForm_box dataForm_top_box">
+        <view class="dataForm_item rightBorder">
+          <view class="addColor1 tip">{{todayDetail.confirmedIncr == 0 ? '较昨日无变化' : '较昨日+'+todayDetail.confirmedIncr}}
+          </view>
+          <view class="addColor1 current_count">{{todayDetail.confirmedCount}}</view>
+          <view class="item_title">累计确诊</view>
+        </view>
+        <view class="dataForm_item rightBorder">
+          <view class="addColor2 tip">{{todayDetail.curedIncr == 0 ? '较昨日无变化' : '较昨日+'+todayDetail.curedIncr}}</view>
+          <view class="addColor2 current_count">{{todayDetail.curedCount}}</view>
+          <view class="item_title">累计治愈</view>
+        </view>
+        <view class="dataForm_item">
+          <view class="addColor3 tip">{{todayDetail.suspectedIncr == 0 ? '较昨日无变化' : '较昨日+'+todayDetail.suspectedIncr}}
+          </view>
+          <view class="addColor3 current_count">{{todayDetail.suspectedCount}}</view>
+          <view class="item_title">境外输入</view>
+        </view>
+      </view>
+      <view class="dataForm_box dataForm_bottom_box">
+        <view class="dataForm_item rightBorder">
+          <view class="addColor4 tip">{{todayDetail.deadIncr == 0 ? '较昨日无变化' : '较昨日+'+todayDetail.deadIncr}}</view>
+          <view class="addColor4 current_count">{{todayDetail.deadCount}}</view>
+          <view class="item_title">累计死亡</view>
+        </view>
+        <view class="dataForm_item rightBorder">
+          <view class="addColor5 tip">
+            {{todayDetail.currentConfirmedIncr == 0 ? '较昨日无变化' : '较昨日+'+todayDetail.currentConfirmedIncr}}</view>
+          <view class="addColor5 current_count">{{todayDetail.currentConfirmedCount}}</view>
+          <view class="item_title">先存确诊</view>
+        </view>
+        <view class="dataForm_item">
+          <view class="addColor6 tip">{{todayDetail.seriousIncr == 0 ? '较昨日无变化' : '较昨日+'+todayDetail.seriousIncr}}
+          </view>
+          <view class="addColor6 current_count">{{todayDetail.seriousCount}}</view>
+          <view class="item_title">现存无症状</view>
+        </view>
+      </view>
+    </view>
+    <view class="updateTime">
+      最近发布时间：{{updateTime}}
+    </view>
+    <!-- 导航栏 -->
+    <view class="routerBtnBox">
+      <view class="routerBtnBox_container">
+        <navigator url="/pages/epidemicNews/index" class="btnBox_item news">
+          <view>
+            <view class="iconBox">
+              <icon class="iconfont icon-xinwen"></icon>
+            </view>
+            <view class="btn_item_Text">疫情资讯</view>
+          </view>
+        </navigator>
+        <navigator url="/pages/epidemicRumors/index" class="btnBox_item rumor">
+          <view>
+            <view class="iconBox">
+              <icon class="iconfont icon-piyao"></icon>
+            </view>
+            <view class="btn_item_Text">疫情辟谣</view>
+          </view>
+        </navigator>
+      </view>
+    </view>
+    <!-- 地图 -->
+    <view class="epidemicMap">
+      <ec-canvas id="mychart-dom-map" canvas-id="mychart-map" ec="{{ ecMap }}"></ec-canvas>
+    </view>
+    <!-- 城市信息 -->
+    <view class="epidemicCity">
+      <view class="epidemicCity_item_title">
+        <view class="item_box box_color">地区</view>
+        <view class="item_box box_color1">已治愈</view>
+        <view class="item_box box_color2">新增确诊</view>
+        <view class="item_box box_color3">累计确诊</view>
+        <view class="item_box box_color4">死亡</view>
+        <view class="item_box box_color">操作</view>
+      </view>
+      <view wx:for="{{currentData}}" wx:key="key" wx:for-index="index" data-index="{{index}}" class="epidemicCity_item">
+        <view class="item_box">{{item.name}}</view>
+        <view class="item_box">{{item.heal}}</view>
+        <view class="item_box">{{item.newConfirm}}</view>
+        <view class="item_box">{{item.confirm}}</view>
+        <view class="item_box">{{item.dead}}</view>
+        <view bindtap="copyCityDetail" data-name="{{item.name}}" data-heal="{{item.heal}}"
+          data-newConfirm="{{item.newConfirm}}" data-confirm="{{item.confirm}}" data-dead="{{item.dead}}"
+          class="item_box copyDetail">
+          复制
+        </view>
+      </view>
+      <view class="ismore" bindtap="toggleMore">{{moreBtnText}}<i class="iconfont {{iconClass}}"></i></view>
+    </view>
+  </view>
+</view>

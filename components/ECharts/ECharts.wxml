@@ -1,5 +1,0 @@
-<view class="echarts_box" style="width: {{width}}; height: {{height}}" class="echarts">
-  <view class="container">
-    <ec-canvas ec="{{ec}}"></ec-canvas>
-  </view>
-</view>

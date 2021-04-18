@@ -165,9 +165,9 @@ function setBarLineOption(fxDate = null, pressure = null, humidity = null) { // 
             color: 'rgba(255,255,255,0.2)'
           }
         },
-        min: 1000, // 图表左侧最小值
-        max: 1020, // 图表右侧最大值
-        interval: 4, // 增值
+        min: 900, // 图表左侧最小值
+        max: 1100, // 图表右侧最大值
+        interval: 40, // 增值
       },
       {
         type: 'value',
@@ -254,10 +254,9 @@ Page({
         chartLine = echarts.init(canvas, null, {
           width: width,
           height: height,
-          devicePixelRatio: getPixelRatio()
+          devicePixelRatio: getPixelRatio()  // 设置像素比
         });
         canvas.setChart(chartLine);
-
         //可以先不setOption，等数据加载好后赋值，
         //不过那样没setOption前，echats元素是一片空白
         chartLine.setOption(setBarOption());
@@ -328,8 +327,10 @@ Page({
         humidity.push(item.humidity)  // 获取湿度
       }
       let option = setBarOption(fxDate, tempMax, tempMin) // 调用方法设置图表option参数
-      let option2 = setBarLineOption(fxDate, pressure, humidity)  // 设置图片option
       chartLine.setOption(option) // 调用 setOption 设置图表参数
+      
+      let option2 = setBarLineOption(fxDate, pressure, humidity)  // 设置图片option
+      
       chartLine2.setOption(option2)
     })
   },
@@ -338,7 +339,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
     setTimeout(() => {
       this.getBarOption()
     }, 500)

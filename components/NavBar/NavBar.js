@@ -11,6 +11,14 @@ Component({
     showBack:{
       type: Boolean,
       value: false
+    },
+    fontColor: {
+      type: String,
+      value: '#fff'
+    },
+    navColorBlack: {
+      type: Boolean,
+      value: false
     }
   },
 
@@ -43,5 +51,16 @@ Component({
         })
       }
     })
+    if (this.properties.navColorBlack) {
+      wx.setNavigationBarColor({
+        frontColor: '#000000',
+        backgroundColor: 'transparent'
+      })
+    } else {
+      wx.setNavigationBarColor({
+        frontColor: '#ffffff',
+        backgroundColor: 'transparent'
+      })
+    }
   },
 })

@@ -1,0 +1,38 @@
+.rumorsContainer{
+  padding: 30rpx;
+}
+.rumors_item{
+  padding: 25rpx;
+  box-shadow: var(--shacolor);
+  position: relative;
+}
+.rumor_img{
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  right: 20%;
+  bottom: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rumor_img .img_icon{
+  min-width: 200rpx;
+  min-height: 200rpx;
+  opacity: 0.3;
+}
+.item_title{
+  font-size: 32rpx;
+  font-weight: 550;
+  margin-bottom: 15rpx;
+}
+.item_body{
+  letter-spacing: 1px;
+  margin-bottom: 15rpx;
+  word-break:break-all;
+}
+.summary{
+  text-align: right;
+  margin-bottom: 15rpx;
+  color: rgb(38, 184, 241);
+}

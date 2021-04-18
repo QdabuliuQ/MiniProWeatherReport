@@ -1,0 +1,25 @@
+.newsContainer{
+  padding: 30rpx;
+}
+.news_item{
+  padding: 25rpx;
+  margin-bottom: 45rpx;
+  box-shadow: var(--shacolor);
+  border-radius: 12rpx;
+}
+.newsTitle{
+  font-size: 32rpx;
+  font-weight: 550;
+  margin-bottom: 15rpx;
+}
+.newsContent{
+  margin-bottom: 15rpx;
+  letter-spacing: 1px;
+}
+.detail_item{
+  font-size: 24rpx;
+  text-align: right;
+}
+.detail_item text {
+  color: rgb(38, 184, 241);
+}

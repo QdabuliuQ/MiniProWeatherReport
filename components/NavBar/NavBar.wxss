@@ -30,3 +30,6 @@
   color: #fff;
   font-size: 35rpx;
 }
+.navBlack{
+  color: #000 !important;
+}

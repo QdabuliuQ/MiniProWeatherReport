@@ -24,7 +24,14 @@ Page({
     globalData: null,  // 顶部高度
     toastPosition: 0,  // 提示框位置
     toastBackgroundColor: '#fff',
-    blurPX: 0
+    blurPX: 0,
+
+    aniName: '',  // 按钮动画
+    showLeftBtn: true,  // 隐藏按钮
+    showLeftBtnTip: false,  // 隐藏按钮提示
+    tipAniName: '',  // 提示动画
+    tipPosition: 0,  // 默认提示框位置为0
+    audioUrl: null,  // 音频地址
   },
   blurPXIndex: 0,
   
@@ -75,6 +82,7 @@ Page({
     wx.getLocation({  // 获取地理位置
       type: 'gcj02',  
       success: (result) => {
+        console.log(result);
         this.setData({
           latitude: result.latitude,  // 保存纬度
           longitude: result.longitude  // 保存经度
@@ -163,6 +171,7 @@ Page({
               const query = wx.createSelectorQuery() // 创建节点查询器 query
               query.select('.airLine').boundingClientRect(function(res) {
                 let toastPosition = res.width / 500 * that.data.airDetail.aqi  // 计算位置
+                // let toastPosition = 400  // 计算位置
                 if (toastPosition > 0 && toastPosition <= res.width * 0.1) {
                   activeColor = colorList[0]
                 } else if (toastPosition > res.width * 0.1 && toastPosition <= res.width * 0.2 ){
@@ -177,17 +186,18 @@ Page({
                   activeColor = colorList[5]
                 }
                 that.setData({
-                  toastPosition,
+                  tipPosition: toastPosition,
                   toastBackgroundColor: activeColor
                 })
               });
               query.exec(function (res) {})
-              wx.createSelectorQuery().select('.tempDetail').boundingClientRect(function(rect){
+              wx.createSelectorQuery().select('.topLine').boundingClientRect(function(rect){
                 scrollHeight = rect.top
               }).exec(function(){  // exec是回调函数
                 that.setData({
                   scrollHeight
                 })
+                console.log(scrollHeight);
               })
             })
           })
@@ -225,8 +235,7 @@ Page({
   },
 
 
-  listenScroll(e) {
-    
+  listenScroll(e) {  // 监听滚动
     if (e.scrollTop > this.data.scrollTop) {
       let index = this.data.scrollHeight / 5
       if (this.blurPXIndex <= 5) { 
@@ -253,19 +262,67 @@ Page({
   },
 
   onReady() {
-    
+    setTimeout(() => {
+      this.setData({
+        showLeftBtnTip: true
+      })
+    }, 3000)
+
+    setTimeout(() => {
+      this.setData({
+        showLeftBtnTip: false
+      })
+    }, 10000)
   },
 
-  // 获取星期
-  getDayOfWeek(dayTime){
-    let day = new Date(Date.parse(dayTime.replace(/-/g, '/'))); //将日期值格式化
-    let today = new Array("星期天","星期一","星期二","星期三","星期四","星期五","星期六");
-    return today[day.getDay()]; //day.getDay();根据Date返一个星期中的某其中0为星期日
+  shareDetail() {  // 复制天气速报
+    let dt = new Date(this.data.tempertureDetail.obsTime);
+    const y = dt.getFullYear();  // 获取年份
+    const m = (dt.getMonth() + 1 + '').padStart(2, '0');  // 获取月份
+    const d = (dt.getDate()+ '').padStart(2, '0');  // 获取日期
+    const h = dt.getHours(); 
+    let time = `${y}年/${m}月/${d}日`
+    let moment = ''
+    if (h >= 5 && h <= 11) {
+      moment = '早上好'
+    } else if (h >= 12 && h <= 13){
+      moment = '中午好'
+    } else if (h >= 14 && h <= 17){
+      moment = '下午好'
+    } else {
+      moment = '晚上好'
+    }
+    let temdetail = this.data.tempertureDetail
+    let dailyArr = this.data.dailyArr
+    wx.setClipboardData({  // 赋值文本
+      data: `${moment}呀~ 今天是${time} ${this.data.date} \n \n您所在的位置是：${this.data.cityDetail.name}(经度：${this.data.longitude.toFixed(2)}，纬度：${this.data.latitude.toFixed(2)}) \n \n今天天气速报如下🌈： \n⭐⭐⭐⭐⭐⭐ \n天气状况：${temdetail.text}，当前温度：${temdetail.temp}°，${temdetail.windDir}${temdetail.windScale}级 风速${temdetail.windSpeed}m/s，空气质量：${this.data.airDetail.aqi} ${this.data.airDetail.category} \n${dailyArr[1].name}🌂：${dailyArr[1].category}，${dailyArr[2].name}🚗：${dailyArr[2].category}，${dailyArr[6].name}👸：${dailyArr[6].category}，${dailyArr[8].name}🏀：${dailyArr[8].category}，${dailyArr[11].name}💊：${dailyArr[11].category}\n⭐⭐⭐⭐⭐⭐\n欢迎使用#小程序：云舒天气`,
+      success: function () {
+      	// 添加下面的代码可以复写复制成功默认提示文本`内容已复制` 
+        wx.showToast({
+          title: '复制成功',
+          duration: 3000
+        })
+        wx.getClipboardData({
+          success: function (res) {
+          }
+        })
+      }
+    })
   },
-  
-  that: this,
+  // 获取星期
+
+  playReportAudio() {
+  },
+
+
   onPageScroll(e){ // 获取滚动条当前位置
-    
+    let h = wx.getSystemInfoSync().windowHeight
+    if (e.scrollTop + h >= this.data.scrollHeight && this.data.toastPosition != this.data.tipPosition) {
+      
+      this.setData({
+        toastPosition: this.data.tipPosition
+      })
+    }
     this.throttle(250, e)
   }
 })

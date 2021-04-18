@@ -21,7 +21,7 @@
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
     "compileHotReLoad": false,
-    "useMultiFrameRuntime": false,
+    "useMultiFrameRuntime": true,
     "useApiHook": true,
     "babelSetting": {
       "ignore": [],
@@ -36,7 +36,8 @@
     "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
-    "minifyWXSS": true
+    "minifyWXSS": true,
+    "useApiHostProcess": false
   },
   "compileType": "miniprogram",
   "libVersion": "2.16.0",
@@ -89,6 +90,12 @@
           "name": "地图",
           "pathName": "pages/mapView/index",
           "query": "latitude=23.13171&longitude=113.26627",
+          "scene": null
+        },
+        {
+          "name": "疫情",
+          "pathName": "pages/epidemicDetail/index",
+          "query": "",
           "scene": null
         }
       ]

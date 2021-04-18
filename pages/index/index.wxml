@@ -138,7 +138,7 @@
       </view>
     </view>
     <!-- 生活指数 -->
-    <view class="liftIndexTop">生活指数</view>
+    <view class="liftIndexTop ">生活指数</view>
     <view class="liftIndex">
       <view class="liftIndexItem" wx:for="{{dailyArr}}" wx:key="key">
         <view class="liftIndexBox">
@@ -150,7 +150,7 @@
         </view>
       </view>
     </view>
-    <view class="liftIndexTop">
+    <view class="liftIndexTop topLine">
       空气指数
       <view class="score">{{airDetail.aqi}} · {{airDetail.category}}</view>
     </view>
@@ -186,8 +186,20 @@
         <view class="rightContainer">500</view>
       </view>
     </view>
+    <view class="shareTodayDetail">
+      <view bindtap='shareDetail' class="shareDetailBtn">复制天气速报</view>
+    </view>
   </view>
   <scroll-Bgc-Img scrollVague="{{true}}" blurPX="{{blurPX}}"></scroll-Bgc-Img>
+  <navigator url="/pages/epidemicDetail/index" class="toAnimateView" wx:if="{{showLeftBtn}}" style="animation:{{aniName}}">
+    <view class="animateBox">
+      <i class="iconfont icon-yiqing">
+      </i>
+      <view wx:if="{{showLeftBtnTip}}" class="animateBox_tip">
+        查看国内疫情
+      </view>
+    </view>
+  </navigator>
 </view>
 
 <wxs module="m1">

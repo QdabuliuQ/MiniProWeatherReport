@@ -1,0 +1,20 @@
+<view id="epodemicRumors">
+  <!-- 顶部导航栏 -->
+  <navbar navColorBlack="{{true}}" fontColor="{{'#000'}}" showBack="{{true}}" class="navbar" CityTitle="{{'疫情辟谣'}}" />
+  <view wx:for="{{rumors}}" wx:key='key' class="rumorsContainer">
+    <view class="rumors_item">
+      <view class="rumor_img">
+        <image class="img_icon" src="/icon/rumor.png"></image>
+      </view>
+      <view class="item_title">
+        {{item.title}}
+      </view>
+      <view class="summary">
+        {{item.mainSummary}}
+      </view>
+      <view class="item_body">
+        {{item.body}}
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,191 @@
+#epidemicDetail{
+  position: relative;
+  background-color: rgb(255, 255, 255);
+}
+.navbar{
+  color: #000;
+}
+.detail_container{
+  padding: 30rpx;
+}
+.dataForm{
+  width: 100%;
+  background-color: #fff;
+  border-radius: 16rpx;
+  box-shadow: 0 0 10rpx rgba(0, 0, 0, .2);
+}
+.dataForm_box{
+  width: 100%;
+  display: flex;
+}
+.dataForm_top_box{
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+}
+.dataForm_bottom_box{
+  padding-bottom: 30rpx;
+}
+.dataForm_item{
+  flex: 1;
+  text-align: center;
+}
+.dataForm_item .tip {
+  font-size: 21rpx;
+}
+.current_count{
+  font-size: 38rpx;
+}
+.routerBtnBox{
+  
+  width: 100%;
+  margin-top: 50rpx;
+  padding: 30rpx 0;
+  box-shadow: 0 0 10rpx rgba(0, 0, 0, .2);
+  border-radius: 16rpx;
+}
+.routerBtnBox_container{
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+}
+.btnBox_item{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.news{
+  border-right: 1px solid rgb(190, 190, 190);
+  box-sizing: border-box;
+}
+.iconBox{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10rpx;
+}
+.iconBox .iconfont {
+  font-size: 50rpx;
+  position: relative;
+  right: 5rpx;
+}
+.btn_item_Text{
+  letter-spacing: 1px;
+  font-size: 26rpx;
+  color: rgb(75, 75, 75);
+}
+.item_title{
+  font-size: 25rpx;
+  font-weight: 550;
+}
+.addColor1{
+  color: rgb(189, 35, 35) !important;
+}
+.addColor2{
+  color: rgb(38, 209, 32);
+}
+.addColor3{
+  color: rgb(252, 141, 38);
+}
+.addColor4{
+  color: rgb(109, 109, 109);
+}
+.addColor5{
+  color: rgb(253, 74, 74);
+}
+.addColor6{
+  color: rgb(216, 1, 1);
+}
+.rightBorder {
+  border-right: 1px solid rgb(228, 228, 228);
+  box-sizing: border-box;
+}
+.updateTime{
+  margin-top: 16rpx;
+  font-size: 24rpx;
+  color: rgb(129, 129, 129);
+  text-align: right;
+}
+.epidemicMap{
+  margin-top: 50rpx;
+  width: 100%;
+  height: 600rpx;
+}
+.mychart-map{
+  width: 100%;
+  height: 100%;
+}
+.epidemicCity{
+  margin-top: 50rpx;
+  overflow: auto;
+  width: 100%;
+  border-radius: 12rpx;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+}
+.epidemicCity_item_title{
+  overflow: hidden;
+  width: 100%;
+  /* background-color: #000; */
+  display: flex;
+  align-items: center;
+}
+.epidemicCity_item{
+  width: 100%;
+  height: 65rpx;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgb(235, 235, 235);
+  /* background-color: #000; */
+  display: flex;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+}
+.epidemicCity_item .item_box{
+  color: #000;
+  font-size: 25rpx;
+  text-align: right;
+}
+.epidemicCity_item .copyDetail{
+  color: rgb(27, 174, 219);
+}
+.item_box{
+  flex: 1;
+  font-size: 22rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10rpx 0;
+  color: #fff;
+}
+.ismore{
+  width: 100%;
+  height: 70rpx;
+  font-size: 25rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1.5px solid rgb(235, 235, 235);
+  box-sizing: border-box;
+  color: rgb(27, 174, 219);
+}
+.iconfont{
+  margin-left: 8rpx;
+  color: rgb(27, 174, 219);
+  font-size: 20rpx;
+  margin-top: 4rpx;
+}
+.box_color{
+  background-color: rgb(185, 185, 185);
+}
+.box_color1{
+  background-color: rgb(38, 209, 32);
+}
+.box_color2{
+  background-color: rgb(253, 74, 74);
+}
+.box_color3{
+  background-color: rgb(219, 43, 43);
+}
+.box_color4{
+  background-color: rgb(153, 153, 153);
+}

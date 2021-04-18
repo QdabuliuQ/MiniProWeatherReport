@@ -1,4 +1,4 @@
-import {request, requestDetail} from "../../request/request"
+import { requestDetail} from "../../request/request"
 Page({
 
   /**

@@ -5,7 +5,10 @@
     "pages/nowDetail/index",
     "pages/search/index",
     "pages/searchResult/index",
-    "pages/mapView/index"
+    "pages/mapView/index",
+    "pages/epidemicDetail/index",
+    "pages/epidemicNews/index",
+    "pages/epidemicRumors/index"
   ],
   "window":{
     "backgroundTextStyle":"light",

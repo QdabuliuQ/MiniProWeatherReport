@@ -17,15 +17,15 @@ Page({
       inputValue: str
     })
     clearInterval(this.TimeId)  // 清除上一次的延时器
-    if (!str.trim()) {
+    if (!str.trim()) {  // 判断输入内容是否为空
       this.setData({
-        searchResult: []
+        searchResult: []  // 清空数据
       })
       return
     }
     this.TimeId = setTimeout(() => {  // 重新创建新的延时器 （防抖）
-      this.getSearchResult(str)
-    }, 1000)
+      this.getSearchResult(str)  // 发起请求
+    }, 1000)  // 相隔一秒后
   },
 
   getSearchResult(str){
