@@ -74,4 +74,10 @@ Page({
     })
   },
 
+  onShareAppMessage: function() {
+    return {
+      title: '搜索喜欢的城市',
+      path: '/pages/search/index'
+    }
+  }
 })

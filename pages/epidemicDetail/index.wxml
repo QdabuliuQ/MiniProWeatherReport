@@ -3,21 +3,21 @@
   </navbar>
   <view class="detail_container">
     <!-- 顶部基础数据 -->
-    <view class="dataForm">
+    <view class="dataForm" wx:if="{{todayDetail != null}}">
       <view class="dataForm_box dataForm_top_box">
         <view class="dataForm_item rightBorder">
-          <view class="addColor1 tip">{{todayDetail.confirmedIncr == 0 ? '较昨日无变化' : '较昨日+'+todayDetail.confirmedIncr}}
+          <view wx:if="{{todayDetail.confirmedIncr != null}}" class="addColor1 tip">{{todayDetail.confirmedIncr == 0 ? '较昨日无变化' : '较昨日+'+todayDetail.confirmedIncr}}
           </view>
           <view class="addColor1 current_count">{{todayDetail.confirmedCount}}</view>
           <view class="item_title">累计确诊</view>
         </view>
         <view class="dataForm_item rightBorder">
-          <view class="addColor2 tip">{{todayDetail.curedIncr == 0 ? '较昨日无变化' : '较昨日+'+todayDetail.curedIncr}}</view>
+          <view wx:if="{{todayDetail.curedIncr != null}}" class="addColor2 tip">{{todayDetail.curedIncr == 0 ? '较昨日无变化' : '较昨日+'+todayDetail.curedIncr}}</view>
           <view class="addColor2 current_count">{{todayDetail.curedCount}}</view>
           <view class="item_title">累计治愈</view>
         </view>
         <view class="dataForm_item">
-          <view class="addColor3 tip">{{todayDetail.suspectedIncr == 0 ? '较昨日无变化' : '较昨日+'+todayDetail.suspectedIncr}}
+          <view wx:if="{{todayDetail.suspectedIncr != null}}" class="addColor3 tip">{{todayDetail.suspectedIncr == 0 ? '较昨日无变化' : '较昨日+'+todayDetail.suspectedIncr}}
           </view>
           <view class="addColor3 current_count">{{todayDetail.suspectedCount}}</view>
           <view class="item_title">境外输入</view>
@@ -25,18 +25,18 @@
       </view>
       <view class="dataForm_box dataForm_bottom_box">
         <view class="dataForm_item rightBorder">
-          <view class="addColor4 tip">{{todayDetail.deadIncr == 0 ? '较昨日无变化' : '较昨日+'+todayDetail.deadIncr}}</view>
+          <view  wx:if="{{todayDetail.deadIncr != null}}" class="addColor4 tip">{{todayDetail.deadIncr == 0 ? '较昨日无变化' : '较昨日+'+todayDetail.deadIncr}}</view>
           <view class="addColor4 current_count">{{todayDetail.deadCount}}</view>
           <view class="item_title">累计死亡</view>
         </view>
         <view class="dataForm_item rightBorder">
-          <view class="addColor5 tip">
+          <view  wx:if="{{todayDetail.currentConfirmedIncr != null}}" class="addColor5 tip">
             {{todayDetail.currentConfirmedIncr == 0 ? '较昨日无变化' : '较昨日+'+todayDetail.currentConfirmedIncr}}</view>
           <view class="addColor5 current_count">{{todayDetail.currentConfirmedCount}}</view>
           <view class="item_title">先存确诊</view>
         </view>
         <view class="dataForm_item">
-          <view class="addColor6 tip">{{todayDetail.seriousIncr == 0 ? '较昨日无变化' : '较昨日+'+todayDetail.seriousIncr}}
+          <view  wx:if="{{todayDetail.seriousIncr != null}}" class="addColor6 tip">{{todayDetail.seriousIncr == 0 ? '较昨日无变化' : '较昨日+'+todayDetail.seriousIncr}}
           </view>
           <view class="addColor6 current_count">{{todayDetail.seriousCount}}</view>
           <view class="item_title">现存无症状</view>

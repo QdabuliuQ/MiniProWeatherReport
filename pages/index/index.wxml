@@ -82,7 +82,7 @@
       <view class="tempDetailView">
         <view class="tempDetailLeft">
           <image style="width: 256rpx; height: 256rpx"
-            src="{{'cloud://clouddisk-1g6nr788ca92c10a.636c-clouddisk-1g6nr788ca92c10a-1304975629/128/' + tempertureDetail.icon + '.png'}}">
+            src="{{'https://636c-clouddisk-1g6nr788ca92c10a-1304975629.tcb.qcloud.la/256/' + tempertureDetail.icon + '.png'}}">
           </image>
         </view>
         <view class="temDetailRight">
@@ -200,6 +200,15 @@
       </view>
     </view>
   </navigator>
+  <!-- <view class="toAnimateView" bindtap="toEpidemic" wx:if="{{showLeftBtn}}" style="animation:{{aniName}}">
+    <view class="animateBox">
+      <i class="iconfont icon-yiqing">
+      </i>
+      <view wx:if="{{showLeftBtnTip}}" class="animateBox_tip">
+        查看国内疫情
+      </view>
+    </view>
+  </view> -->
 </view>
 
 <wxs module="m1">

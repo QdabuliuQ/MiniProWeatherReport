@@ -82,7 +82,6 @@ Page({
     wx.getLocation({  // 获取地理位置
       type: 'gcj02',  
       success: (result) => {
-        console.log(result);
         this.setData({
           latitude: result.latitude,  // 保存纬度
           longitude: result.longitude  // 保存经度
@@ -197,7 +196,6 @@ Page({
                 that.setData({
                   scrollHeight
                 })
-                console.log(scrollHeight);
               })
             })
           })
@@ -216,6 +214,18 @@ Page({
           })
         })
       }
+    })
+  },
+
+  // 
+  getDayOfWeek(fxDate) {
+    return fxDate.slice(5)
+  },
+
+  toEpidemic() {
+    wx.showModal({
+      title:'提示',
+      content:'此功能请使用源码并在使用微信开发助手打开\n由于个人开发者无法发布(线上版本)有关疫情的内容',
     })
   },
 
@@ -309,11 +319,6 @@ Page({
       }
     })
   },
-  // 获取星期
-
-  playReportAudio() {
-  },
-
 
   onPageScroll(e){ // 获取滚动条当前位置
     let h = wx.getSystemInfoSync().windowHeight
@@ -324,5 +329,12 @@ Page({
       })
     }
     this.throttle(250, e)
+  },
+
+  onShareAppMessage: function() {
+    return {
+      title: '查看天气状况',
+      path: '/pages/index/index'
+    }
   }
 })

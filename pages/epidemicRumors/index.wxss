@@ -1,3 +1,25 @@
+#epodemicRumors{
+  position: relative;
+}
+.backTopBtn{
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 30rpx;
+  border-radius: 50%;
+  width: 80rpx;
+  height: 80rpx;
+  background-color: #26b8f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.backTopBtn .iconfont{
+  color: #Fff;
+  font-size: 35rpx;
+  position: relative;
+  top: -5rpx;
+}
 .rumorsContainer{
   padding: 30rpx;
 }
@@ -32,7 +54,7 @@
   word-break:break-all;
 }
 .summary{
-  text-align: right;
+  text-align: center;
   margin-bottom: 15rpx;
   color: rgb(38, 184, 241);
 }

@@ -153,7 +153,6 @@ Page({
       url: 'https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5',
       success: (res) => {
         let detail = JSON.parse(res.data.data)  // 将数据解析
-        console.log(detail);
         let cityCurrentDetail = [] // 城市数组
         let halfCityData = []
         let cityData = []  // 城市疫情信息
@@ -253,11 +252,12 @@ Page({
   onShow: function () {
 
   },
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
 
+
+  onShareAppMessage: function() {
+    return {
+      title: `查看最新疫情数据`,
+      path: '/pages/epidemicDetail/index'
+    }
   },
-
 })

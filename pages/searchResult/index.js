@@ -201,4 +201,11 @@ Page({
       })
     })
   },
+
+  onShareAppMessage: function() {
+    return {
+      title: `查看${this.data.cityDetail.name}的天气`,
+      path: '/pages/searchResult/index'
+    }
+  }
 })

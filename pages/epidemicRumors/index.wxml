@@ -17,4 +17,7 @@
       </view>
     </view>
   </view>
+  <view bindtap="toBack" wx:if="{{showBtn}}" class="backTopBtn">
+    <icon class="iconfont icon-dingbu"></icon>
+  </view>
 </view>

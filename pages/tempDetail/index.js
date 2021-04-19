@@ -63,4 +63,11 @@ Page({
       }
     })  
   },
+
+  onShareAppMessage: function() {
+    return {
+      title: `查看${this.data.dayDetail.fxDate}的天气`,
+      path: '/pages/tempDetail/index'
+    }
+  }
 })

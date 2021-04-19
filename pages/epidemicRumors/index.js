@@ -7,7 +7,8 @@ Page({
   data: {
     page: 1,
     num: 10,
-    rumors: []
+    rumors: [],
+    showBtn: false,  // 返回顶部按钮
   },
 
   getRumors(page, num) {
@@ -62,5 +63,31 @@ Page({
     })
     this.getRumors(this.data.page, this.data.num)  // 下拉请求数据
   },
+
+  onShareAppMessage: function() {
+    return {
+      title: `查看最新疫情辟谣`,
+      path: '/pages/epidemicRumors/index'
+    }
+  },
+
+  onPageScroll: function(e) {
+    if (e.scrollTop > 2000) {
+      this.setData({
+        showBtn: true
+      })
+    } else {
+      this.setData({
+        showBtn: false
+      })
+    }
+  },
+
+  toBack() {  // 返回顶部
+    wx.pageScrollTo({
+      scrollTop: 0,
+      duration: 500
+    })
+  }
 
 })

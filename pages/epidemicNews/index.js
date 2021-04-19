@@ -8,6 +8,7 @@ Page({
     page: 1,
     num: 10,
     news: [],  // 新闻数组
+    showBtn: false,  // 返回顶部按钮
   },
 
   /**
@@ -68,4 +69,30 @@ Page({
     })
     this.getNews(this.data.page, this.data.num)
   },
+
+  onShareAppMessage: function() {
+    return {
+      title: `查看最新疫情资讯`,
+      path: '/pages/epidemicNews/index'
+    }
+  },
+
+  onPageScroll: function(e) {
+    if (e.scrollTop > 2000) {
+      this.setData({
+        showBtn: true
+      })
+    } else {
+      this.setData({
+        showBtn: false
+      })
+    }
+  },
+
+  toBack() {  // 返回顶部
+    wx.pageScrollTo({
+      scrollTop: 0,
+      duration: 500
+    })
+  }
 })

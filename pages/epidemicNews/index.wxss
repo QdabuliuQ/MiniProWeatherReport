@@ -1,3 +1,25 @@
+#epidemicNews{
+  position: relative;
+}
+.backTopBtn{
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 30rpx;
+  border-radius: 50%;
+  width: 80rpx;
+  height: 80rpx;
+  background-color: #26b8f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.backTopBtn .iconfont{
+  color: #Fff;
+  font-size: 35rpx;
+  position: relative;
+  top: -5rpx;
+}
 .newsContainer{
   padding: 30rpx;
 }
@@ -19,7 +41,8 @@
 .detail_item{
   font-size: 24rpx;
   text-align: right;
+  margin-bottom: 8rpx;
 }
 .detail_item text {
-  color: rgb(38, 184, 241);
+  color: #26b8f1;
 }
